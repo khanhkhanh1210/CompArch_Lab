@@ -1,0 +1,25 @@
+|vending_machine
+clk => coin_value[0].CLK
+clk => coin_value[1].CLK
+clk => coin_value[2].CLK
+clk => coin_value[3].CLK
+clk => coin_value[4].CLK
+clk => current_state~1.DATAIN
+rst_n => coin_value[0].ACLR
+rst_n => coin_value[1].ACLR
+rst_n => coin_value[2].ACLR
+rst_n => coin_value[3].ACLR
+rst_n => coin_value[4].ACLR
+rst_n => current_state~3.DATAIN
+nickle => WideOr0.IN0
+nickle => Decoder0.IN0
+dime => WideOr0.IN1
+dime => Decoder0.IN1
+quarter => WideOr0.IN2
+quarter => Decoder0.IN2
+change[0] <= change.DB_MAX_OUTPUT_PORT_TYPE
+change[1] <= change.DB_MAX_OUTPUT_PORT_TYPE
+change[2] <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+soda <= soda.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,188 @@
+vsim work.vending_testbench
+# vsim work.vending_testbench 
+# Start time: 19:25:32 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'uut'.  Expected 9, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /vending_testbench/uut File: D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv Line: 10
+# ** Warning: (vsim-3722) D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv(10): [TFMPC] - Missing connection for port 'state_test'.
+# ** Warning: (vsim-3722) D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv(10): [TFMPC] - Missing connection for port 'coin_value_test'.
+add wave -position insertpoint sim:/vending_testbench/*
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+add wave -position insertpoint sim:/vending_testbench/*
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.vending_testbench
+# End time: 19:27:34 on Sep 13,2024, Elapsed time: 0:02:02
+# Errors: 0, Warnings: 6
+# vsim work.vending_testbench 
+# Start time: 19:27:34 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+add wave -position insertpoint sim:/vending_testbench/*
+run -all
+# ** Note: $finish    : D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv(52)
+#    Time: 205 ps  Iteration: 0  Instance: /vending_testbench
+# 1
+# Break in Module vending_testbench at D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv line 52
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+add wave -position insertpoint sim:/vending_testbench/*
+vsim work.vending_testbench
+# End time: 19:29:03 on Sep 13,2024, Elapsed time: 0:01:29
+# Errors: 0, Warnings: 2
+# vsim work.vending_testbench 
+# Start time: 19:29:03 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+add wave -position insertpoint sim:/vending_testbench/*
+run -all
+# ** Note: $finish    : D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv(52)
+#    Time: 205 ps  Iteration: 0  Instance: /vending_testbench
+# 1
+# Break in Module vending_testbench at D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv line 52
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.vending_testbench
+# End time: 22:16:01 on Sep 13,2024, Elapsed time: 2:46:58
+# Errors: 0, Warnings: 2
+# vsim work.vending_testbench 
+# Start time: 22:16:01 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+add wave -position insertpoint sim:/vending_testbench/*
+run -all
+# ** Note: $finish    : D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv(52)
+#    Time: 205 ps  Iteration: 0  Instance: /vending_testbench
+# 1
+# Break in Module vending_testbench at D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv line 52
+# Compile of vedingmachine_tb.sv failed with 1 errors.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 1 failed with 1 error.
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.vending_testbench
+# End time: 22:21:44 on Sep 13,2024, Elapsed time: 0:05:43
+# Errors: 0, Warnings: 3
+# vsim work.vending_testbench 
+# Start time: 22:21:44 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+add wave -position insertpoint sim:/vending_testbench/*
+run -all
+# ** Note: $finish    : D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv(58)
+#    Time: 62 ps  Iteration: 0  Instance: /vending_testbench
+# 1
+# Break in Module vending_testbench at D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv line 58
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.vending_testbench
+# End time: 22:23:52 on Sep 13,2024, Elapsed time: 0:02:08
+# Errors: 0, Warnings: 2
+# vsim work.vending_testbench 
+# Start time: 22:23:52 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+add wave -position insertpoint sim:/vending_testbench/*
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.vending_testbench
+# End time: 22:24:17 on Sep 13,2024, Elapsed time: 0:00:25
+# Errors: 0, Warnings: 2
+# vsim work.vending_testbench 
+# Start time: 22:24:17 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.vending_testbench
+# End time: 22:24:36 on Sep 13,2024, Elapsed time: 0:00:19
+# Errors: 0, Warnings: 3
+# vsim work.vending_testbench 
+# Start time: 22:24:36 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+add wave -position insertpoint sim:/vending_testbench/*
+run -all
+restart -f
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.vending_testbench
+# End time: 22:25:38 on Sep 13,2024, Elapsed time: 0:01:02
+# Errors: 0, Warnings: 2
+# vsim work.vending_testbench 
+# Start time: 22:25:38 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+add wave -position insertpoint sim:/vending_testbench/*
+run -all
+# ** Note: $finish    : D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv(58)
+#    Time: 168 ps  Iteration: 0  Instance: /vending_testbench
+# 1
+# Break in Module vending_testbench at D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv line 58
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.vending_testbench
+# End time: 22:26:58 on Sep 13,2024, Elapsed time: 0:01:20
+# Errors: 0, Warnings: 2
+# vsim work.vending_testbench 
+# Start time: 22:26:58 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+vsim work.vending_testbench
+# End time: 22:27:17 on Sep 13,2024, Elapsed time: 0:00:19
+# Errors: 0, Warnings: 1
+# vsim work.vending_testbench 
+# Start time: 22:27:17 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+add wave -position insertpoint sim:/vending_testbench/*
+run -all
+# ** Note: $finish    : D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv(58)
+#    Time: 163 ps  Iteration: 0  Instance: /vending_testbench
+# 1
+# Break in Module vending_testbench at D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv line 58
+# Compile of vedingmachine_tb.sv was successful.
+# Compile of vending_machine.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.vending_testbench
+# End time: 22:35:47 on Sep 13,2024, Elapsed time: 0:08:30
+# Errors: 0, Warnings: 2
+# vsim work.vending_testbench 
+# Start time: 22:35:47 on Sep 13,2024
+# Loading sv_std.std
+# Loading work.vending_testbench
+# Loading work.vending_machine
+add wave -position insertpoint sim:/vending_testbench/*
+run -all
+# ** Note: $finish    : D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv(61)
+#    Time: 299 ps  Iteration: 2  Instance: /vending_testbench
+# 1
+# Break in Module vending_testbench at D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv line 61
+# End time: 23:24:46 on Sep 13,2024, Elapsed time: 0:48:59
+# Errors: 0, Warnings: 1

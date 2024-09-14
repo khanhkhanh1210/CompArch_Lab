@@ -1,0 +1,45 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "change[0]",
+					"strict" : false
+				},
+				{
+					"name" : "change[1]",
+					"strict" : false
+				},
+				{
+					"name" : "change[2]",
+					"strict" : false
+				},
+				{
+					"name" : "soda",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst_n",
+					"strict" : false
+				},
+				{
+					"name" : "nickle",
+					"strict" : false
+				},
+				{
+					"name" : "quarter",
+					"strict" : false
+				},
+				{
+					"name" : "dime",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

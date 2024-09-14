@@ -1,0 +1,86 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/20.1
+Xvedingmachine_tb_sv_unit
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+!s110 1726226859
+Vz58G4C4Y8ZM9@L=66??I51
+r1
+!s85 0
+!i10b 1
+!s100 VV=j>g9B04KcV3iko==mh0
+Iz58G4C4Y8ZM9@L=66??I51
+!i103 1
+S1
+Z1 dD:/214/ctmt/lab/vending machine/simulation
+w1726226829
+Z2 8D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv
+Z3 FD:/214/ctmt/lab/vending machine/vedingmachine_tb.sv
+!i122 9
+L0 1 0
+Z4 OV;L;2020.1;71
+31
+!s108 1726226859.000000
+Z5 !s107 D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv|
+Z6 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv|
+!i113 1
+Z7 o-work work -sv
+Z8 tCvgOpt 0
+vvending_machine
+R0
+Z9 !s110 1726241741
+!i10b 1
+!s100 19L^Gzk@aQm_XGhQf491O2
+Z10 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I546z=go>EXRg]E_ai1RF=3
+Z11 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R1
+w1726240513
+8D:/214/ctmt/lab/vending machine/vending_machine.sv
+FD:/214/ctmt/lab/vending machine/vending_machine.sv
+!i122 47
+L0 2 98
+R4
+r1
+!s85 0
+31
+Z12 !s108 1726241741.000000
+!s107 D:/214/ctmt/lab/vending machine/vending_machine.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/vending machine/vending_machine.sv|
+!i113 1
+R7
+R8
+vvending_testbench
+R0
+R9
+!i10b 1
+!s100 anQBe26_[Xf]5PT_APIWD1
+R10
+I:Jb_d2l5mJG[dSQn=iUM90
+R11
+S1
+R1
+w1726241673
+R2
+R3
+!i122 46
+L0 1 63
+R4
+r1
+!s85 0
+31
+R12
+R5
+R6
+!i113 1
+R7
+R8
