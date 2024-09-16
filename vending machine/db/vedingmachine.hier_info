@@ -11,15 +11,19 @@ rst_n => coin_value[2].ACLR
 rst_n => coin_value[3].ACLR
 rst_n => coin_value[4].ACLR
 rst_n => current_state~3.DATAIN
-nickle => WideOr0.IN0
 nickle => Decoder0.IN0
-dime => WideOr0.IN1
 dime => Decoder0.IN1
-quarter => WideOr0.IN2
 quarter => Decoder0.IN2
 change[0] <= change.DB_MAX_OUTPUT_PORT_TYPE
 change[1] <= change.DB_MAX_OUTPUT_PORT_TYPE
 change[2] <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
 soda <= soda.DB_MAX_OUTPUT_PORT_TYPE
+state_test[0] <= state_test[0].DB_MAX_OUTPUT_PORT_TYPE
+state_test[1] <= soda.DB_MAX_OUTPUT_PORT_TYPE
+coin_value_test[0] <= coin_value[0].DB_MAX_OUTPUT_PORT_TYPE
+coin_value_test[1] <= coin_value[1].DB_MAX_OUTPUT_PORT_TYPE
+coin_value_test[2] <= coin_value[2].DB_MAX_OUTPUT_PORT_TYPE
+coin_value_test[3] <= coin_value[3].DB_MAX_OUTPUT_PORT_TYPE
+coin_value_test[4] <= coin_value[4].DB_MAX_OUTPUT_PORT_TYPE
 
 

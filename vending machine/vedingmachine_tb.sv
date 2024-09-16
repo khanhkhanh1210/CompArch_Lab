@@ -25,8 +25,8 @@ module vending_testbench();
     );
     
     task randomize_coin();
-        {nickle, dime, quarter} = $urandom_range(0, 2);  // Generate random index
-        {nickle, dime, quarter}= possible_coin[{nickle, dime, quarter}];  // Assign the corresponding value
+        {quarter, dime, nickle} = $urandom_range(0, 2);  // Generate random index
+        {quarter, dime, nickle}= possible_coin[{quarter, dime, nickle}];  // Assign the corresponding value
     endtask
 
     // Clock generation
@@ -38,7 +38,7 @@ module vending_testbench();
     // Reset generation
     initial begin
         rst_n = 0;
-        #5 rst_n = 1;
+        #3 rst_n = 1;
     end
 
     task random_delay();
@@ -53,9 +53,9 @@ module vending_testbench();
         possible_coin[2] = 3'b100; // 25$
         repeat(50) begin
             randomize_coin();
-            random_delay();
+            #7;
             // turn off the coin input
-            {nickle, dime, quarter} = 3'b000;
+            {quarter, dime, nickle} = 3'b000;
             random_delay();
         end
         $finish;

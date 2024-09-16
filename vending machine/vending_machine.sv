@@ -8,8 +8,6 @@ module vending_machine(
     output logic [1:0] state_test,
     output logic [4:0] coin_value_test
 );
-// flag
-    logic enough; // 1: enough money, 0: not enough money
 
 // coin input value
     logic [4:0] coin;
@@ -49,7 +47,7 @@ module vending_machine(
 // decode coin value
     always_comb begin
         coin_value_test = coin_value;
-        case ({nickle, dime, quarter})
+        case ({quarter, dime, nickle})
             3'b001: coin = 5'd5;
             3'b010: coin = 5'd10;
             3'b100: coin = 5'd25;
@@ -58,8 +56,9 @@ module vending_machine(
     end
 
 // coin total value
-    always_ff@ (posedge clk or negedge rst_n) begin
-        if (!rst_n || current_state == IDLE) coin_value <= 0;
+    always_ff@ (posedge clk or negedge rst_n) begin: acc
+        if (!rst_n) coin_value <= 0;
+        else if (current_state == IDLE) coin_value <= 0;
         else if (current_state == ACCEPT) coin_value <= coin_value + coin;
     end
 
