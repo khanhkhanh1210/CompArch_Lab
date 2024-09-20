@@ -5,13 +5,10 @@ module vending_testbench();
     // Outputs
     wire [2:0] change;
     wire soda;
-    // Outputs for test
-    wire [1:0] state_test;
-    wire [4:0] coin_value_test;
-
+    
     logic [2:0] possible_coin [0:2]; // Array to hold the possible values
     logic [2:0] rand_delay; // Random delay value
-    
+        
     vending_machine uut (
         .clk(clk), 
         .rst_n(rst_n), 
@@ -19,9 +16,7 @@ module vending_testbench();
         .dime(dime), 
         .quarter(quarter), 
         .change(change), 
-        .soda(soda),
-        .state_test(state_test),
-        .coin_value_test(coin_value_test)
+        .soda(soda)
     );
     
     task randomize_coin();

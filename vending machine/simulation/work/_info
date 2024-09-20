@@ -36,24 +36,24 @@ Z7 o-work work -sv
 Z8 tCvgOpt 0
 vvending_machine
 R0
-!s110 1726496439
+Z9 !s110 1726839552
 !i10b 1
-!s100 j>B2RP6PO^57WD]EAlVW]2
-Z9 !s11b Dg1SIo80bB@j0V0VzS_@n1
-ICjU62RkdKBzkNk7G1aCUZ2
-Z10 VDg1SIo80bB@j0V0VzS_@n1
+!s100 E2Q1?_Oj<0GT8WlKW`U=i0
+Z10 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IUm:Cjkj6ghE=ca<XgFY[[2
+Z11 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R1
-w1726496324
+w1726839548
 8D:/214/ctmt/lab/vending machine/vending_machine.sv
 FD:/214/ctmt/lab/vending machine/vending_machine.sv
-!i122 53
-L0 2 97
+!i122 111
+L0 2 81
 R4
 r1
 !s85 0
 31
-Z11 !s108 1726496438.000000
+Z12 !s108 1726839552.000000
 !s107 D:/214/ctmt/lab/vending machine/vending_machine.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/vending machine/vending_machine.sv|
 !i113 1
@@ -61,24 +61,24 @@ R7
 R8
 vvending_testbench
 R0
-!s110 1726496438
-!i10b 1
-!s100 f`iSnh]<IR<<]FAHnZbG=2
 R9
-I`Pd;GaaogFUE4=4H]C6=Y3
+!i10b 1
+!s100 SfjYUUiVc`cE<i78hlb6G3
 R10
+I=11A;DCZ3l6K_;`Z@8@na0
+R11
 S1
 R1
-w1726496402
+w1726801904
 R2
 R3
-!i122 52
-L0 1 63
+!i122 110
+L0 1 58
 R4
 r1
 !s85 0
 31
-R11
+R12
 R5
 R6
 !i113 1

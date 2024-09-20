@@ -20,34 +20,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "state_test[0]",
-					"strict" : false
-				},
-				{
-					"name" : "state_test[1]",
-					"strict" : false
-				},
-				{
-					"name" : "coin_value_test[0]",
-					"strict" : false
-				},
-				{
-					"name" : "coin_value_test[1]",
-					"strict" : false
-				},
-				{
-					"name" : "coin_value_test[2]",
-					"strict" : false
-				},
-				{
-					"name" : "coin_value_test[3]",
-					"strict" : false
-				},
-				{
-					"name" : "coin_value_test[4]",
-					"strict" : false
-				},
-				{
 					"name" : "clk",
 					"strict" : false
 				},
