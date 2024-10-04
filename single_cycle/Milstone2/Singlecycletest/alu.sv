@@ -87,7 +87,7 @@ module alu
 				A_ADD   : begin
                 alu_data_o = operand_a_i + operand_b_i;
             end
-            A_SUB   : begin
+            A_SUB   : begin   
                 alu_data_o = operand_a_i + ~(operand_b_i) + 1;
             end
 				A_SLT   : begin
