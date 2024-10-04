@@ -1,0 +1,467 @@
+m255
+K4
+z2
+13
+cModel Technology
+dD:/Year4/CTMT/Milstone2/TuanVy_Singlecycle
+!s112 0.1
+!i10d 8192
+!i10e 25
+!i10f 100
+valu
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 !s110 1699540389
+!i10b 1
+!s100 OJ^:=nLQ`V4CNk]li1>`h1
+I`bLM8JXfdgHEgTn_FJgQ[3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 alu_sv_unit
+S1
+Z3 dD:/Year4/CTMT/Milstone2/Singlecycletest
+w1699369786
+8D:/Year4/CTMT/Milstone2/Singlecycletest/alu.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/alu.sv
+L0 18
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1699540388.000000
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/alu.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/alu.sv|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vbrcomp
+R0
+R1
+!i10b 1
+!s100 dTCR?g1<NIQG@@aTk_G7^3
+I1?K1XzKc^baNDo;jS0XVU0
+R2
+!s105 brcomp_sv_unit
+S1
+R3
+Z7 w1667708991
+8D:/Year4/CTMT/Milstone2/Singlecycletest/brcomp.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/brcomp.sv
+L0 2
+R4
+r1
+!s85 0
+31
+Z8 !s108 1699540389.000000
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/brcomp.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/brcomp.sv|
+!i113 1
+R5
+R6
+vcompare_16bit
+R0
+R1
+!i10b 1
+!s100 7nZiDUQFi8zj1nBbVf50=0
+IiSA@]lN=gH5CN0a0Q4AY`1
+R2
+!s105 compare_16bit_sv_unit
+S1
+R3
+R7
+8D:/Year4/CTMT/Milstone2/Singlecycletest/compare_16bit.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/compare_16bit.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/compare_16bit.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/compare_16bit.sv|
+!i113 1
+R5
+R6
+vcompare_1bit
+R0
+R1
+!i10b 1
+!s100 kiUNSScJYdJ[>M@LIAIJ?2
+IjI@GTdl]NPjmHZ<DZe:WM2
+R2
+!s105 compare_1bit_sv_unit
+S1
+R3
+R7
+8D:/Year4/CTMT/Milstone2/Singlecycletest/compare_1bit.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/compare_1bit.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/compare_1bit.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/compare_1bit.sv|
+!i113 1
+R5
+R6
+vcompare_32bit_s
+R0
+R1
+!i10b 1
+!s100 5NTZ<HCR?Wg5F1ZS?ECH^2
+I13bI7ha<ik7fiW3G<Lo`A3
+R2
+!s105 compare_32bit_s_sv_unit
+S1
+R3
+R7
+8D:/Year4/CTMT/Milstone2/Singlecycletest/compare_32bit_s.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/compare_32bit_s.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/compare_32bit_s.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/compare_32bit_s.sv|
+!i113 1
+R5
+R6
+vcompare_32bit_u
+R0
+R1
+!i10b 1
+!s100 Y8@MT=3znCVRPB?F^hZ`^0
+I2N0l7zh:2RiUDzPHK8;me0
+R2
+!s105 compare_32bit_u_sv_unit
+S1
+R3
+R7
+8D:/Year4/CTMT/Milstone2/Singlecycletest/compare_32bit_u.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/compare_32bit_u.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/compare_32bit_u.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/compare_32bit_u.sv|
+!i113 1
+R5
+R6
+vcompare_4bit
+R0
+R1
+!i10b 1
+!s100 PdkWeXdnKka^]mRnM[l6^2
+ICZ>E3070lUX42cK?2_UjO0
+R2
+!s105 compare_4bit_sv_unit
+S1
+R3
+R7
+8D:/Year4/CTMT/Milstone2/Singlecycletest/compare_4bit.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/compare_4bit.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/compare_4bit.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/compare_4bit.sv|
+!i113 1
+R5
+R6
+vcompare_8bit
+R0
+R1
+!i10b 1
+!s100 boEifH]<>:6`_6;5d67Gn0
+I287Y8mi6U0JhG7K9C@hG_2
+R2
+!s105 compare_8bit_sv_unit
+S1
+R3
+R7
+8D:/Year4/CTMT/Milstone2/Singlecycletest/compare_8bit.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/compare_8bit.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/compare_8bit.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/compare_8bit.sv|
+!i113 1
+R5
+R6
+vctrl_unit
+R0
+R1
+!i10b 1
+!s100 gCUK=iHFnikTS9<8Ld_5j2
+Ia3];d0KEF>2NIijdT[G:Y1
+R2
+!s105 ctrl_unit_sv_unit
+S1
+R3
+w1668157708
+8D:/Year4/CTMT/Milstone2/Singlecycletest/ctrl_unit.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/ctrl_unit.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/ctrl_unit.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/ctrl_unit.sv|
+!i113 1
+R5
+R6
+vdata_memory
+R0
+R1
+!i10b 1
+!s100 jVnn_laQO@a6l[TU>2M>i2
+IPW3=a_7]QT0=fBj=N`g@O1
+R2
+!s105 data_memory_sv_unit
+S1
+R3
+w1668223022
+8D:/Year4/CTMT/Milstone2/Singlecycletest/data_memory.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/data_memory.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/data_memory.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/data_memory.sv|
+!i113 1
+R5
+R6
+vimmgen
+R0
+R1
+!i10b 1
+!s100 jNL=k`<d1>29P]iXzZ:;N1
+I^6_[Dm5TBK9T:57DQQ`5K3
+R2
+!s105 immgen_sv_unit
+S1
+R3
+R7
+8D:/Year4/CTMT/Milstone2/Singlecycletest/immgen.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/immgen.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/immgen.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/immgen.sv|
+!i113 1
+R5
+R6
+vinst_memory
+R0
+R1
+!i10b 1
+!s100 6hV50_<TYREQ^WQZSXHV72
+IKL=Y:S;5iMn5XbE8QMPcj0
+R2
+!s105 inst_memory_sv_unit
+S1
+R3
+w1699519926
+8D:/Year4/CTMT/Milstone2/Singlecycletest/inst_memory.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/inst_memory.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R8
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/inst_memory.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/inst_memory.sv|
+!i113 1
+R5
+R6
+vlsu
+R0
+Z9 !s110 1699540390
+!i10b 1
+!s100 BKnOXTH]kc[oa9Y20So4d1
+IeM<oBz;Ba_?FdiFL]SlmD2
+R2
+!s105 lsu_sv_unit
+S1
+R3
+w1699342128
+8D:/Year4/CTMT/Milstone2/Singlecycletest/lsu.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/lsu.sv
+L0 16
+R4
+r1
+!s85 0
+31
+Z10 !s108 1699540390.000000
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/lsu.sv|
+!s90 -reportprogress|300|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/lsu.sv|
+!i113 1
+R5
+R6
+vmux2to1
+R0
+R9
+!i10b 1
+!s100 k2hFo[L1LkT94^g>ZGGEQ3
+IQW@N5:73IjTFJ=0_f<?Oc2
+R2
+!s105 mux2to1_sv_unit
+S1
+R3
+R7
+8D:/Year4/CTMT/Milstone2/Singlecycletest/mux2to1.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/mux2to1.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R10
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/mux2to1.sv|
+!s90 -reportprogress|30|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/mux2to1.sv|
+!i113 1
+R5
+R6
+vmux4to1
+R0
+R9
+!i10b 1
+!s100 1XFAO;dO<H22JezJ7dJXO2
+IbacNcAK1gP=:zBXhb^1Lj0
+R2
+!s105 mux4to1_sv_unit
+S1
+R3
+R7
+8D:/Year4/CTMT/Milstone2/Singlecycletest/mux4to1.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/mux4to1.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R10
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/mux4to1.sv|
+!s90 -reportprogress|30|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/mux4to1.sv|
+!i113 1
+R5
+R6
+vPC
+R0
+R9
+!i10b 1
+!s100 JAj1gY>4PZaG<?U8D@BhU2
+I`b2V8d5RIPdn0h^H8be@K0
+R2
+!s105 PC_sv_unit
+S1
+R3
+w1698206030
+8D:/Year4/CTMT/Milstone2/Singlecycletest/PC.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/PC.sv
+Z11 L0 15
+R4
+r1
+!s85 0
+31
+R10
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/PC.sv|
+!s90 -reportprogress|30|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/PC.sv|
+!i113 1
+R5
+R6
+n@p@c
+vregfile
+R0
+R9
+!i10b 1
+!s100 gM3_BH2gclionfWLL4a3Z0
+I4_XKLlhWad<^aznMfl<=_3
+R2
+!s105 regfile_sv_unit
+S1
+R3
+w1668159244
+8D:/Year4/CTMT/Milstone2/Singlecycletest/regfile.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/regfile.sv
+R11
+R4
+r1
+!s85 0
+31
+R10
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/regfile.sv|
+!s90 -reportprogress|30|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/regfile.sv|
+!i113 1
+R5
+R6
+vsinglecycle
+R0
+R9
+!i10b 1
+!s100 DPWaSS[REdfi:zCZc2n]a3
+I2?W_DB6I4C8@cb>h2<6;51
+R2
+!s105 singlecycle_sv_unit
+S1
+R3
+w1699534999
+8D:/Year4/CTMT/Milstone2/Singlecycletest/singlecycle.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/singlecycle.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R10
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/singlecycle.sv|
+!s90 -reportprogress|30|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/singlecycle.sv|
+!i113 1
+R5
+R6
+vsinglecycle_tb
+R0
+R9
+!i10b 1
+!s100 EA]j;_IRJUjdF;FjDk9h;0
+I6zf@Oh77doOe1`mjd2ahX3
+R2
+!s105 singlecycle_tb_sv_unit
+S1
+R3
+w1699535172
+8D:/Year4/CTMT/Milstone2/Singlecycletest/singlecycle_tb.sv
+FD:/Year4/CTMT/Milstone2/Singlecycletest/singlecycle_tb.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R10
+!s107 D:/Year4/CTMT/Milstone2/Singlecycletest/singlecycle_tb.sv|
+!s90 -reportprogress|30|-work|work|D:/Year4/CTMT/Milstone2/Singlecycletest/singlecycle_tb.sv|
+!i113 1
+R5
+R6

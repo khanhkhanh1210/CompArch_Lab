@@ -24,9 +24,9 @@ rst_n => coin_value_reg[4].ACLR
 nickle => Decoder0.IN0
 dime => Decoder0.IN1
 quarter => Decoder0.IN2
-change[0] <= change.DB_MAX_OUTPUT_PORT_TYPE
-change[1] <= change.DB_MAX_OUTPUT_PORT_TYPE
-change[2] <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
-soda <= current_state.DB_MAX_OUTPUT_PORT_TYPE
+change[0] << change.DB_MAX_OUTPUT_PORT_TYPE
+change[1] << change.DB_MAX_OUTPUT_PORT_TYPE
+change[2] << Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+soda << current_state.DB_MAX_OUTPUT_PORT_TYPE
 
 

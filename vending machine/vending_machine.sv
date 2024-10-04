@@ -50,7 +50,7 @@ module vending_machine(
     end
 
 // coin total value
-    always_ff@ (posedge clk or negedge rst_n) begin: acc
+    always_ff@ (posedge clk or negedge rst_n) begin: accumulator
         if (!rst_n) coin_value <= 0;
         else if(coin_value >= 5'd20) coin_value <= coin;
         else if (!(coin_value >= 5'd20)) coin_value <= coin_value + coin;

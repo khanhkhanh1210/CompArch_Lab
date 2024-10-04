@@ -1,0 +1,285 @@
+// +FHDR------------------------------------------------------------
+//      Copyright (c) 2022 Ho Chi Minh city University of Technology
+//                         ALL RIGHTS RESERVED
+// -----------------------------------------------------------------
+// Filename      : data_memory.sv
+// Author        : Nhat Minh, Quang Ky, Duc Thuan
+// Created On    : 2022-10-03 14:00
+// Last Modified : 
+// -----------------------------------------------------------------
+// Description: 4KB of mem
+//
+//
+// -FHDR------------------------------------------------------------
+module lsu 
+#(
+    //parameter for data memory
+    parameter                    BYTE          = 2'b00,
+    parameter                    HWORD         = 2'b01,
+    parameter                    WORD          = 2'b10,
+    //parameter for memory mapping 
+    parameter                    DATA_MEMORY     = 2'b00,
+    parameter                    OUT_PERIPHERALS = 2'b01,
+    parameter                    IN_PERIPHERALS  = 2'b10,
+    parameter                    RESERVED        = 2'b11
+    
+)
+(
+    //input
+    input     logic              clk_i,
+    input     logic              rst_ni,
+    input     logic    [31:0]    addr_i,
+    input     logic    [31:0]    st_data_i,
+    input     logic              st_en_i, //1 to write and 0 to read
+    input     logic    [31:0]    io_sw_i,
+    input     logic    [2:0]     sel_mod,
+    //output 
+    output    logic    [31:0]    ld_data_o,
+    output    logic    [31:0]    io_lcd_o,
+    output    logic    [31:0]    io_ledg_o,
+    output    logic    [31:0]    io_ledr_o,
+    output    logic    [31:0]    io_hex0_o,
+    output    logic    [31:0]    io_hex1_o,
+    output    logic    [31:0]    io_hex2_o,
+    output    logic    [31:0]    io_hex3_o,
+    output    logic    [31:0]    io_hex4_o,
+    output    logic    [31:0]    io_hex5_o,
+    output    logic    [31:0]    io_hex6_o,
+    output    logic    [31:0]    io_hex7_o
+);
+    logic              [1:0]     addr_sel;
+    /* for internal signal: [src]_[des]_[signal_name]*/
+    
+    logic              [31:0]    dmem_mux_lddata; // this wire connect dmem's output to mux's input  
+    logic              [31:0]    oper_mux_lddata;
+    logic              [31:0]    iper_mux_lddata;
+    //signal to dmem after de-mux
+    logic                        dmux_dmem_st_en;
+    //signal to out peripherals after demux
+    logic                        dmux_oper_st_en;
+    //input pheripherals reg
+    logic              [31:0]    input_per_reg ;
+    //output peripherals reg
+    logic              [31:0]    output_per_reg   [10:0] ;
+    
+    //-------------generate addr_sel----------------//
+    always_comb begin
+        if ((addr_i[15:8] == 8'h00) || (addr_i[15:8] == 8'h01) || (addr_i[15:8] == 8'h02) || (addr_i[15:8] == 8'h03)) begin 
+            addr_sel = DATA_MEMORY;
+        end 
+        else if (addr_i[15:8] == 8'h04) begin 
+            addr_sel = OUT_PERIPHERALS;
+        end
+        else if (addr_i[15:8] == 8'h05) begin 
+            addr_sel = IN_PERIPHERALS;
+        end
+        else begin 
+            addr_sel = RESERVED;
+        end      
+    end 
+    //de-mux for and st_en_i
+    always_comb begin 
+     case (addr_sel) 
+        DATA_MEMORY : begin 
+            //dmem
+            dmux_dmem_st_en   = st_en_i   ;
+            //output peripherals
+            dmux_oper_st_en   = 1'b0  ;
+        end
+        OUT_PERIPHERALS : begin 
+            dmux_dmem_st_en   = 1'b0  ;
+            //output peripherals
+            dmux_oper_st_en   = st_en_i   ;           
+            
+        end
+        IN_PERIPHERALS : begin 
+            dmux_dmem_st_en   = 1'b0   ;
+            //output peripherals
+            dmux_oper_st_en   = 1'b0  ;       
+        end 
+        RESERVED : begin 
+            dmux_dmem_st_en   = 1'b0   ;
+            //output peripherals
+            dmux_oper_st_en   = 1'b0  ;  
+        end 
+        default : begin 
+        end 
+     endcase
+    
+    end
+    //------------input peripherals-----------//
+   /* always_ff @(posedge clk_i or negedge rst_ni) begin 
+        if (!rst_ni) begin 
+            input_per_reg <= 32'b0 ;
+        end 
+        else begin 
+            if (addr_i[15:0] == 16'h0500) begin 
+                input_per_reg <= io_sw_i ;
+                //input_per_reg <= io_sw_i ;
+            end 
+            else begin 
+                input_per_reg <= input_per_reg ;
+            end 
+        end 
+    end */
+    always_comb begin 
+   		    if (addr_i[15:0] == 16'h0500) begin 
+                input_per_reg = io_sw_i;
+            end
+            else begin 
+                input_per_reg  = 32'b1 ;
+            end 
+    end
+    
+    always_comb begin 
+        if (addr_i[15:0] == 16'h0500) begin 
+            iper_mux_lddata = input_per_reg ;
+        end
+        else begin 
+            iper_mux_lddata = 32'b1 ;
+        end 
+    end 
+    
+    //-----------output peripherals-----------//
+
+    always_ff @(posedge clk_i or negedge rst_ni) begin 
+        if (!rst_ni) begin 
+            output_per_reg[0]  <= 32'b0 ;
+            output_per_reg[1]  <= 32'b0 ;
+            output_per_reg[2]  <= 32'b0 ;
+            output_per_reg[3]  <= 32'b0 ;
+            output_per_reg[4]  <= 32'b0 ;
+            output_per_reg[5]  <= 32'b0 ;
+            output_per_reg[6]  <= 32'b0 ;
+            output_per_reg[7]  <= 32'b0 ;
+            output_per_reg[8]  <= 32'b0 ;
+            output_per_reg[9]  <= 32'b0 ;
+            output_per_reg[10] <= 32'b0 ;
+            
+        end 
+        else begin 
+            if (dmux_oper_st_en) begin 
+                case (addr_i[15:0]) 
+                    16'h0400 : output_per_reg[0]  <= st_data_i;
+                    16'h0410 : output_per_reg[1]  <= st_data_i;
+                    16'h0420 : output_per_reg[2]  <= st_data_i;
+                    16'h0430 : output_per_reg[3]  <= st_data_i;
+                    16'h0440 : output_per_reg[4]  <= st_data_i;
+                    16'h0450 : output_per_reg[5]  <= st_data_i;
+                    16'h0460 : output_per_reg[6]  <= st_data_i;
+                    16'h0470 : output_per_reg[7]  <= st_data_i;
+                    16'h0480 : output_per_reg[8]  <= st_data_i;
+                    16'h0490 : output_per_reg[9]  <= st_data_i;
+                    16'h04A0 : output_per_reg[10] <= st_data_i;
+                    default  : begin 
+                    end  
+                endcase
+            end 
+            else begin 
+                output_per_reg[10:0] <= output_per_reg[10:0] ;
+            end 
+        end 
+    end 
+    /*always_comb begin 
+			if (dmux_oper_st_en) begin 
+                case (addr_i[15:0]) 
+                    16'h0400 : output_per_reg[0]  = st_data_i;
+                    16'h0410 : output_per_reg[1]  = st_data_i;
+                    16'h0420 : output_per_reg[2]  = st_data_i;
+                    16'h0430 : output_per_reg[3]  = st_data_i;
+                    16'h0440 : output_per_reg[4]  = st_data_i;
+                    16'h0450 : output_per_reg[5]  = st_data_i;
+                    16'h0460 : output_per_reg[6]  = st_data_i;
+                    16'h0470 : output_per_reg[7]  = st_data_i;
+                    16'h0480 : output_per_reg[8]  = st_data_i;
+                    16'h0490 : output_per_reg[9]  = st_data_i;
+                    16'h04A0 : output_per_reg[10] = st_data_i;
+                    default  : begin 
+                    end  
+                endcase
+            end 
+            else begin 
+                output_per_reg[10:0] = output_per_reg[10:0] ;
+            end 
+    end*/
+    
+    always_comb begin 
+        if (!dmux_oper_st_en) begin 
+            case (addr_i[15:0]) 
+                16'h0400 : oper_mux_lddata = output_per_reg[0]  ;
+                16'h0410 : oper_mux_lddata = output_per_reg[1]  ;
+                16'h0420 : oper_mux_lddata = output_per_reg[2]  ;
+                16'h0430 : oper_mux_lddata = output_per_reg[3]  ;
+                16'h0440 : oper_mux_lddata = output_per_reg[4]  ;
+                16'h0450 : oper_mux_lddata = output_per_reg[5]  ;
+                16'h0460 : oper_mux_lddata = output_per_reg[6]  ;
+                16'h0470 : oper_mux_lddata = output_per_reg[7]  ;
+                16'h0480 : oper_mux_lddata = output_per_reg[8]  ;
+                16'h0490 : oper_mux_lddata = output_per_reg[9]  ;
+                16'h04A0 : oper_mux_lddata = output_per_reg[10] ;
+                default  : begin 
+                    oper_mux_lddata = 32'hFFFFFFFF;
+                end
+            endcase 
+        end 
+        else begin  
+            oper_mux_lddata = 32'hFFFFFFFF ;
+        end
+    end 
+    //-------------- data mem-----------------//
+    data_memory 
+    #(
+       .BYTE     (BYTE),  
+       .HWORD    (HWORD), 
+       .WORD     (WORD) 
+    
+    ) data_memory_inst
+    (
+        //input 
+        .clk_i     (clk_i),
+        .rst_ni    (rst_ni),
+        .addr_i    (addr_i),
+        .wdata_i   (st_data_i),
+        .wren_i    (dmux_dmem_st_en),
+        .sel_mod   (sel_mod),
+        //output
+        .rdata_o   (dmem_mux_lddata)
+        
+    );
+    //mux for ld_data_o
+    always_comb begin 
+        case (addr_sel)
+            DATA_MEMORY : begin 
+                ld_data_o = dmem_mux_lddata ;
+            end
+            OUT_PERIPHERALS : begin 
+                ld_data_o = oper_mux_lddata ;
+            end
+            IN_PERIPHERALS : begin 
+                ld_data_o = iper_mux_lddata ;
+            end
+            RESERVED : begin 
+                ld_data_o = 32'b1 ;
+            end
+            default : begin 
+            end 
+            
+        endcase
+        
+    end 
+    //peripherals output 
+    assign io_lcd_o      = output_per_reg[10]  ;
+    assign io_ledg_o     = output_per_reg[9]   ;
+    assign io_ledr_o     = output_per_reg[8]   ;
+    assign io_hex0_o     = output_per_reg[0]   ;
+    assign io_hex1_o     = output_per_reg[1]    ;
+    assign io_hex2_o     = output_per_reg[2]    ;
+    assign io_hex3_o     = output_per_reg[3]    ;
+    assign io_hex4_o     = output_per_reg[4]    ;
+    assign io_hex5_o     = output_per_reg[5]    ;
+    assign io_hex6_o     = output_per_reg[6]    ;
+    assign io_hex7_o     = output_per_reg[7]    ;
+    
+    
+    //--------------------(^_^)--------------------//
+endmodule : lsu 
