@@ -34,7 +34,10 @@ module vending_machine(
                 if (coin_value >= 5'd20) next_state = DISPENSE;
                 else next_state = ACCEPT;
             end
-            DISPENSE: next_state = ACCEPT;
+            DISPENSE: begin
+                if (coin_value >= 5'd20) next_state = DISPENSE;
+                else next_state = ACCEPT;
+            end
             default: next_state =  ACCEPT;
         endcase
     end
