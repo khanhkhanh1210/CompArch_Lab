@@ -18,7 +18,8 @@ module vending_testbench();
         .change(change), 
         .soda(soda)
     );
-    
+
+// Randomize the coin value    
     task randomize_coin();
         {quarter, dime, nickle} = $urandom_range(0, 2);  // Generate random index
         {quarter, dime, nickle} = possible_coin[{quarter, dime, nickle}];  // Assign the corresponding value
@@ -46,7 +47,7 @@ module vending_testbench();
         possible_coin[0] = 3'b001; // 5$
         possible_coin[1] = 3'b010; // 10$
         possible_coin[2] = 3'b100; // 25$
-        repeat(50) begin
+        repeat(50) begin            // Repeat 50 cases
             randomize_coin();
             #4;
             // turn off the coin input
