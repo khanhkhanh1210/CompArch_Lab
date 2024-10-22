@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at regfile.sv(17): always construct contains both blocking and non-blocking assignments File: D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/regfile.sv Line: 17
