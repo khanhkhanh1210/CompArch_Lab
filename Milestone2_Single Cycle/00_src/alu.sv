@@ -62,6 +62,9 @@ barrel_shifter  barrel_shifter(
     .result     (o_alu_data)
 );
 
+assign blarger_s = compare_32bit_s.blarger_o;
+assign blarger_u = compare_32bit_u.blarger_o;
+
 always_comb begin
     case(i_alu_op)
         A_ADD: o_alu_data = add_sub.S;
