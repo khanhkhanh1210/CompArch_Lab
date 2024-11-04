@@ -5,15 +5,19 @@ module immgen
     output  logic   [31:0]    imm_o
 );
 
-    localparam I_FORMAT_CALCULATE      = 5'b00100;
-    localparam I_FORMAT_LOAD           = 5'b00000;
-    localparam S_FORMAT                = 5'b01000;
-    localparam B_FORMAT                = 5'b11000;
-    localparam U_FORMAT_LUI            = 5'b01101;
-    localparam U_FORMAT_AUIPC          = 5'b00101;
-    localparam J_FORMAT_JAL            = 5'b11011;
-    localparam J_FORMAT_JALR           = 5'b11001;
-    
+    typedef enum logic [4:0] { 
+        I_FORMAT_CALCULATE      = 5'b00100,
+        I_FORMAT_LOAD           = 5'b00000,
+        S_FORMAT                = 5'b01000,
+        B_FORMAT                = 5'b11000,
+        U_FORMAT_LUI            = 5'b01101,
+        U_FORMAT_AUIPC          = 5'b00101,
+        J_FORMAT_JAL            = 5'b11011,
+        J_FORMAT_JALR           = 5'b11001
+     } FORMAT;
+
+    FORMAT instr_i[6:2];                        // Extract the opcode from the instruction
+
     always_comb begin
         case (instr_i[6:2])
             I_FORMAT_CALCULATE,I_FORMAT_LOAD: 

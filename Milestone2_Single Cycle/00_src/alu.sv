@@ -1,7 +1,7 @@
 module alu
 #(
     // parameter; opcode definition
-    parameter WIDTH = 32,
+    parameter WIDTH = 32
 )
 (
     input   logic   [3:0]           i_alu_op,
@@ -9,28 +9,23 @@ module alu
     input   logic   [WIDTH-1:0]     i_operand_b,
   
     
-    output  logic   [WIDTH-1:0]     o_alu_data,
+    output  logic   [WIDTH-1:0]     o_alu_data
 //    output  logic                   o_bru_exp
 );
 
-    typedef enum logic [3:0] { 
-        A_ADD  = 4'b0000 ,
-        A_SUB  = 4'b0001 ,
-        A_SLT  = 4'b0010 ,
-        A_SLTU = 4'b0011 ,
-        A_XOR  = 4'b0100 ,
-        A_OR   = 4'b0101 ,
-        A_AND  = 4'b0110 ,
-        A_SLL  = 4'b0111 ,
-        A_SRL  = 4'b1000 ,
-        A_SRA  = 4'b1001
-    } OPCODE;
-
-    OPCODE i_alu_op[3:0];
-
+    localparam A_ADD  = 4'b0000;
+    localparam A_SUB  = 4'b0001;
+    localparam A_SLT  = 4'b0010;
+    localparam A_SLTU = 4'b0011;
+    localparam A_XOR  = 4'b0100;
+    localparam A_OR   = 4'b0101;
+    localparam A_AND  = 4'b0110;
+    localparam A_SLL  = 4'b0111;
+    localparam A_SRL  = 4'b1000;
+    localparam A_SRA  = 4'b1001;
+    
     logic [4:0]         shift_number;
-    logic               blarger_u;
-    logic               blarger_s;
+    logic               blarger;
     logic [63:0]        alu_data_temp;
     logic [63:0]        alu_data_temp2;
 
@@ -44,20 +39,12 @@ module alu
         .S      (o_alu_data)
     );
 
-    compare_32bit_u compare32u_0(
-        .a_i        (i_operand_a[31:0]),
-        .b_i        (i_operand_b[31:0]),
-        .equal_o    (),
-        .alarger_o  (),
-        .blarger_o  (blarger_u)
-    );
-        
-    compare_32bit_s compare32s_1(
-        .a_i        (i_operand_a[31:0]),
-        .b_i        (i_operand_b[31:0]),
-        .equal_o    (),
-        .alarger_o  (),
-        .blarger_o  (blarger_s)
+    brc #(WIDTH) compare_32bit_s(
+        .i_rst1_data(i_operand_a),
+        .i_rst2_data(i_operand_b),
+        .i_brc_un(i_alu_op[0]),
+        .o_brc_equal(),
+        .o_brc_less(blarger)
     );
 
     barrel_shifter  barrel_shifter(
@@ -67,15 +54,12 @@ module alu
         .result     (o_alu_data)
     );
 
-    assign blarger_s = compare_32bit_s.blarger_o;
-    assign blarger_u = compare_32bit_u.blarger_o;
-
     always_comb begin
         case(i_alu_op)
             A_ADD: o_alu_data = add_sub.S;
             A_SUB: o_alu_data = add_sub.S;
-            A_SLT: o_alu_data = {31'b0,blarger_s};              
-            A_SLTU: o_alu_data = {31'b0,blarger_u};
+            A_SLT: o_alu_data = {31'b0,blarger};              
+            A_SLTU: o_alu_data = {31'b0,blarger};
             A_XOR: o_alu_data = i_operand_a ^ i_operand_b;
             A_OR: o_alu_data = i_operand_a | i_operand_b;
             A_AND: o_alu_data = i_operand_a & i_operand_b;

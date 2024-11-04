@@ -468,6 +468,16 @@ set_location_assignment PIN_V17 -to FL_CE_N
 set_location_assignment PIN_W17 -to FL_OE_N
 set_location_assignment PIN_AA18 -to FL_RST_N
 set_location_assignment PIN_AA17 -to FL_WE_N
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/sram_IS61WV25616_controller_32b_5lr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/sram_IS61WV25616_controller_32b_3lr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/immgen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/compare_32bit_s.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/comparator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/barrel_shifter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/SDRAM.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/ksa_adder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/lsu.sv
@@ -476,7 +486,4 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/add_sub.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/PC.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/regfile.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/brc.sv
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

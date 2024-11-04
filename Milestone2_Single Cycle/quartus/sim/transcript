@@ -16389,3 +16389,5 @@ vsim -gui work.testbench
 run -all
 # Test finished with   0 unsigned errors.
 # Test finished with   0 signed errors.
+# End time: 15:55:27 on Nov 04,2024, Elapsed time: 0:15:02
+# Errors: 0, Warnings: 2
