@@ -1,5 +1,5 @@
 Analysis & Synthesis report for single_cycle
-Mon Oct 21 23:25:58 2024
+Sat Nov 02 14:12:39 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -13,12 +13,73 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Post-Synthesis Netlist Statistics for Top Partition
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Parameter Settings for User Entity Instance: Top-level Entity: |brc
+ 10. Parameter Settings for User Entity Instance: brc:highcomp
+ 11. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp
+ 12. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp
+ 13. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp
+ 14. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp
+ 15. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp
+ 16. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp
+ 17. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp
+ 18. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp
+ 19. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp
+ 20. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp
+ 21. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp
+ 22. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp
+ 23. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp
+ 24. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp
+ 25. Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp
+ 26. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp
+ 27. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp
+ 28. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp
+ 29. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp
+ 30. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp
+ 31. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp
+ 32. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp
+ 33. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp
+ 34. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp
+ 35. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp
+ 36. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp
+ 37. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp
+ 38. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp
+ 39. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp
+ 40. Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp
+ 41. Parameter Settings for User Entity Instance: brc:lowcomp
+ 42. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp
+ 43. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp
+ 44. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp
+ 45. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp
+ 46. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp
+ 47. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp
+ 48. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp
+ 49. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp
+ 50. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp
+ 51. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp
+ 52. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp
+ 53. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp
+ 54. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp
+ 55. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp
+ 56. Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp
+ 57. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp
+ 58. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp
+ 59. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp
+ 60. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp
+ 61. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp
+ 62. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp
+ 63. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp
+ 64. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp
+ 65. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp
+ 66. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp
+ 67. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp
+ 68. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp
+ 69. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp
+ 70. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp
+ 71. Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp
+ 72. Post-Synthesis Netlist Statistics for Top Partition
+ 73. Elapsed Time Per Partition
+ 74. Analysis & Synthesis Messages
 
 
 
@@ -44,14 +105,14 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Oct 21 23:25:58 2024       ;
+; Analysis & Synthesis Status     ; Successful - Sat Nov 02 14:12:39 2024       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; single_cycle                                ;
-; Top-level Entity Name           ; regfile                                     ;
+; Top-level Entity Name           ; brc                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 992                                         ;
-; Total pins                      ; 114                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 67                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -70,7 +131,7 @@ refer to the applicable agreement for further details.
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
-; Top-level entity name                                                           ; regfile            ; single_cycle       ;
+; Top-level entity name                                                           ; brc                ; single_cycle       ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; On                 ; Off                ;
 ; Maximum processors allowed for parallel compilation                             ; 16                 ;                    ;
@@ -161,105 +222,71 @@ refer to the applicable agreement for further details.
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 8           ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processor 3            ;   0.0%      ;
-;     Processor 4            ;   0.0%      ;
-;     Processor 5            ;   0.0%      ;
-;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
-;     Processor 8            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                  ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                              ; Library ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------+---------+
-; ../00_src/regfile.sv             ; yes             ; User SystemVerilog HDL File  ; D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/regfile.sv ;         ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                              ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                          ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------+---------+
+; ../00_src/brc.sv                 ; yes             ; User SystemVerilog HDL File  ; D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary               ;
-+---------------------------------------------+-------------+
-; Resource                                    ; Usage       ;
-+---------------------------------------------+-------------+
-; Estimate of Logic utilization (ALMs needed) ; 896         ;
-;                                             ;             ;
-; Combinational ALUT usage for logic          ; 671         ;
-;     -- 7 input functions                    ; 128         ;
-;     -- 6 input functions                    ; 543         ;
-;     -- 5 input functions                    ; 0           ;
-;     -- 4 input functions                    ; 0           ;
-;     -- <=3 input functions                  ; 0           ;
-;                                             ;             ;
-; Dedicated logic registers                   ; 992         ;
-;                                             ;             ;
-; I/O pins                                    ; 114         ;
-;                                             ;             ;
-; Total DSP Blocks                            ; 0           ;
-;                                             ;             ;
-; Maximum fan-out node                        ; i_clk~input ;
-; Maximum fan-out                             ; 992         ;
-; Total fan-out                               ; 8300        ;
-; Average fan-out                             ; 4.39        ;
-+---------------------------------------------+-------------+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 35             ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 50             ;
+;     -- 7 input functions                    ; 0              ;
+;     -- 6 input functions                    ; 19             ;
+;     -- 5 input functions                    ; 11             ;
+;     -- 4 input functions                    ; 13             ;
+;     -- <=3 input functions                  ; 7              ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 67             ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; i_brc_un~input ;
+; Maximum fan-out                             ; 17             ;
+; Total fan-out                               ; 308            ;
+; Average fan-out                             ; 1.67           ;
++---------------------------------------------+----------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; |regfile                   ; 671 (671)           ; 992 (992)                 ; 0                 ; 0          ; 114  ; 0            ; |regfile            ; regfile     ; work         ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                        ;
++-------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------+-------------+--------------+
+; Compilation Hierarchy Node    ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                  ; Entity Name ; Library Name ;
++-------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------+-------------+--------------+
+; |brc                          ; 50 (18)             ; 0 (0)                     ; 0                 ; 0          ; 67   ; 0            ; |brc                                                                 ; brc         ; work         ;
+;    |brc:highcomp|             ; 12 (4)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:highcomp                                                    ; brc         ; work         ;
+;       |brc:highcomp|          ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:highcomp|brc:highcomp                                       ; brc         ; work         ;
+;       |brc:lowcomp|           ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:highcomp|brc:lowcomp                                        ; brc         ; work         ;
+;          |brc:highcomp|       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:highcomp|brc:lowcomp|brc:highcomp                           ; brc         ; work         ;
+;             |brc:highcomp|    ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp              ; brc         ; work         ;
+;                |brc:highcomp| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp ; brc         ; work         ;
+;          |brc:lowcomp|        ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:highcomp|brc:lowcomp|brc:lowcomp                            ; brc         ; work         ;
+;    |brc:lowcomp|              ; 20 (7)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:lowcomp                                                     ; brc         ; work         ;
+;       |brc:highcomp|          ; 7 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:lowcomp|brc:highcomp                                        ; brc         ; work         ;
+;          |brc:highcomp|       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:lowcomp|brc:highcomp|brc:highcomp                           ; brc         ; work         ;
+;             |brc:highcomp|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp              ; brc         ; work         ;
+;          |brc:lowcomp|        ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:lowcomp|brc:highcomp|brc:lowcomp                            ; brc         ; work         ;
+;       |brc:lowcomp|           ; 6 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:lowcomp|brc:lowcomp                                         ; brc         ; work         ;
+;          |brc:lowcomp|        ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |brc|brc:lowcomp|brc:lowcomp|brc:lowcomp                             ; brc         ; work         ;
++-------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; r_regfile[0][0]                        ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][31]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][30]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][29]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][28]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][27]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][26]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][25]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][24]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][23]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][22]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][21]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][20]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][19]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][18]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][17]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][16]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][15]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][14]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][13]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][12]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][11]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][10]                       ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][9]                        ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][8]                        ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][7]                        ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][6]                        ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][5]                        ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][4]                        ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][3]                        ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][2]                        ; Stuck at GND due to stuck port data_in ;
-; r_regfile[0][1]                        ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 32 ;                                        ;
-+----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -267,24 +294,644 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 992   ;
+; Total registers                              ; 0     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 992   ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 992   ;
+; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |regfile|Mux31             ;
-; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |regfile|Mux63             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |brc ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; DATA_SIZE      ; 32    ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; DATA_SIZE      ; 16    ; Signed Integer                   ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; DATA_SIZE      ; 8     ; Signed Integer                                ;
++----------------+-------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; DATA_SIZE      ; 4     ; Signed Integer                                             ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+-------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                    ;
++----------------+-------+-------------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                          ;
++----------------+-------+-------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+--------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                 ;
++----------------+-------+--------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                       ;
++----------------+-------+--------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                      ;
++----------------+-------+-------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                      ;
++----------------+-------+-------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; DATA_SIZE      ; 4     ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                      ;
++----------------+-------+-------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                  ;
++----------------+-------+-----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                        ;
++----------------+-------+-----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; DATA_SIZE      ; 8     ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; DATA_SIZE      ; 4     ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                      ;
++----------------+-------+-------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                  ;
++----------------+-------+-----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                        ;
++----------------+-------+-----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; DATA_SIZE      ; 4     ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                  ;
++----------------+-------+-----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                        ;
++----------------+-------+-----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                 ;
++----------------+-------+----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                       ;
++----------------+-------+----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                             ;
++----------------+-------+----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                   ;
++----------------+-------+----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; DATA_SIZE      ; 16    ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; DATA_SIZE      ; 8     ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; DATA_SIZE      ; 4     ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                ;
++----------------+-------+-------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                      ;
++----------------+-------+-------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                  ;
++----------------+-------+-----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                        ;
++----------------+-------+-----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; DATA_SIZE      ; 4     ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                  ;
++----------------+-------+-----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                        ;
++----------------+-------+-----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                 ;
++----------------+-------+----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                       ;
++----------------+-------+----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                             ;
++----------------+-------+----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                   ;
++----------------+-------+----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; DATA_SIZE      ; 8     ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; DATA_SIZE      ; 4     ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                  ;
++----------------+-------+-----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                        ;
++----------------+-------+-----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                 ;
++----------------+-------+----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                       ;
++----------------+-------+----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                             ;
++----------------+-------+----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                   ;
++----------------+-------+----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; DATA_SIZE      ; 4     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                 ;
++----------------+-------+----------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                       ;
++----------------+-------+----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp|brc:highcomp ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                              ;
++----------------+-------+-----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp|brc:lowcomp ;
++----------------+-------+----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                             ;
++----------------+-------+----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                   ;
++----------------+-------+----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; DATA_SIZE      ; 2     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:highcomp ;
++----------------+-------+----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                             ;
++----------------+-------+----------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                   ;
++----------------+-------+----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp|brc:lowcomp ;
++----------------+-------+---------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------+
+; DATA_SIZE      ; 1     ; Signed Integer                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------+
@@ -292,17 +939,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 992                         ;
-;     ENA CLR           ; 992                         ;
-; arriav_lcell_comb     ; 671                         ;
-;     extend            ; 128                         ;
-;         7 data inputs ; 128                         ;
-;     normal            ; 543                         ;
-;         6 data inputs ; 543                         ;
-; boundary_port         ; 114                         ;
+; arriav_lcell_comb     ; 50                          ;
+;     normal            ; 50                          ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 4                           ;
+;         4 data inputs ; 13                          ;
+;         5 data inputs ; 11                          ;
+;         6 data inputs ; 19                          ;
+; boundary_port         ; 67                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 3.00                        ;
-; Average LUT depth     ; 2.61                        ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 3.83                        ;
 +-----------------------+-----------------------------+
 
 
@@ -311,7 +958,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -321,9 +968,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Mon Oct 21 23:25:43 2024
+    Info: Processing started: Sat Nov 02 14:12:29 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off single_cycle -c single_cycle
 Info (20032): Parallel compilation is enabled and will use up to 16 processors
+Warning (12019): Can't analyze file -- file ../00_src/SDRAM.sv is missing
 Info (12021): Found 1 design units, including 1 entities, in source file /214/ctmt/lab/milestone2_single cycle/00_src/ksa_adder.sv
     Info (12023): Found entity 1: ksa_adder File: D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/ksa_adder.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file /214/ctmt/lab/milestone2_single cycle/00_src/lsu.sv
@@ -340,18 +988,23 @@ Info (12021): Found 1 design units, including 1 entities, in source file /214/ct
     Info (12023): Found entity 1: regfile File: D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/regfile.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file /214/ctmt/lab/milestone2_single cycle/00_src/brc.sv
     Info (12023): Found entity 1: brc File: D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv Line: 1
-Info (12127): Elaborating entity "regfile" for the top level hierarchy
+Info (12127): Elaborating entity "brc" for the top level hierarchy
+Info (12128): Elaborating entity "brc" for hierarchy "brc:highcomp" File: D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv Line: 27
+Info (12128): Elaborating entity "brc" for hierarchy "brc:highcomp|brc:highcomp" File: D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv Line: 27
+Info (12128): Elaborating entity "brc" for hierarchy "brc:highcomp|brc:highcomp|brc:highcomp" File: D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv Line: 27
+Info (12128): Elaborating entity "brc" for hierarchy "brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp" File: D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv Line: 27
+Info (12128): Elaborating entity "brc" for hierarchy "brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp|brc:highcomp" File: D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv Line: 27
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1777 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 50 input pins
-    Info (21059): Implemented 64 output pins
-    Info (21061): Implemented 1663 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4872 megabytes
-    Info: Processing ended: Mon Oct 21 23:25:58 2024
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:37
+Info (21057): Implemented 117 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 65 input pins
+    Info (21059): Implemented 2 output pins
+    Info (21061): Implemented 50 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4837 megabytes
+    Info: Processing ended: Sat Nov 02 14:12:39 2024
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:22
 
 

@@ -13,14 +13,13 @@ module regfile(
     output logic [31:0]  o_rst2_data         // Data from the second source register
 );
     logic [31:0] r_regfile[31:0];
-    logic [31:0] zero = 32'h0;
-
+    
     always_ff @(posedge i_clk or negedge i_rst_n) begin
         if (!i_rst_n) begin
-            r_regfile[31:1] <= '{default: '0};
+            r_regfile[31:0] <= '{default: '0};
         end else if (i_wr_en) begin
             r_regfile[i_rd_addr] <= i_rd_data;
-            r_regfile[0] <= zero;
+            r_regfile[0] <= '0;
         end
     end
 

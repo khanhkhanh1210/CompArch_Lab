@@ -1,0 +1,312 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/20.1
+vadd_sub
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1730709619
+!i10b 1
+!s100 LOE[FE@M6=Pn2kcUE0;<n2
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Ifh68kR@SBZ1Pc6oXoTKaD0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+S1
+Z4 dD:/214/ctmt/lab/Milestone2_Single Cycle/quartus/sim
+w1730704969
+8D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/add_sub.sv
+FD:/214/ctmt/lab/Milestone2_Single Cycle/00_src/add_sub.sv
+!i122 477
+L0 1 17
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1730709619.000000
+!s107 D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/add_sub.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/add_sub.sv|
+!i113 1
+Z7 o-work work -sv
+Z8 tCvgOpt 0
+vadd_sub_tb
+R0
+Z9 !s110 1730709620
+!i10b 1
+!s100 8EIK<AVS06nS^Q@Pj^PaL1
+R2
+I[`gF8MDQj=1Jol0eS[eT22
+R3
+S1
+R4
+w1730703328
+8D:/214/ctmt/lab/Milestone2_Single Cycle/01_bench/adder_tb.sv
+FD:/214/ctmt/lab/Milestone2_Single Cycle/01_bench/adder_tb.sv
+!i122 484
+L0 1 33
+R5
+r1
+!s85 0
+31
+Z10 !s108 1730709620.000000
+!s107 D:/214/ctmt/lab/Milestone2_Single Cycle/01_bench/adder_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/01_bench/adder_tb.sv|
+!i113 1
+R7
+R8
+vbrc
+R0
+R1
+!i10b 1
+!s100 NTAA5A4zUE6B>AkN<mT[?2
+R2
+ITRi<E46EWn]9J`2BMTBLA0
+R3
+S1
+R4
+w1730709611
+8D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv
+FD:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv
+!i122 479
+L0 1 24
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/brc.sv|
+!i113 1
+R7
+R8
+vcomparator
+R0
+R9
+!i10b 1
+!s100 i7HJ[f`6I;EEFOl<7cJ0`1
+R2
+I4h>o2AJ5zZGVX;D=T=J^V2
+R3
+S1
+R4
+w1730709535
+8D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/comparator.sv
+FD:/214/ctmt/lab/Milestone2_Single Cycle/00_src/comparator.sv
+!i122 485
+L0 1 38
+R5
+r1
+!s85 0
+31
+R10
+!s107 D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/comparator.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/comparator.sv|
+!i113 1
+R7
+R8
+vfco_block
+R0
+R1
+!i10b 1
+!s100 >R>JdA?:nOmZU<9bff8Kj2
+R2
+IzgV98<^LYENmCdc=?1KXJ3
+R3
+S1
+R4
+Z11 w1729402936
+Z12 8D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/black_block.sv
+Z13 FD:/214/ctmt/lab/Milestone2_Single Cycle/00_src/black_block.sv
+!i122 478
+L0 13 9
+R5
+r1
+!s85 0
+31
+R6
+Z14 !s107 D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/black_block.sv|
+Z15 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/black_block.sv|
+!i113 1
+R7
+R8
+vksa_adder
+R0
+R1
+!i10b 1
+!s100 `jU`A>62iLkJ2>Y`gdGAd0
+R2
+IH><;:5fhk^aY5L3i;38]g1
+R3
+S1
+R4
+w1730703172
+8D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/ksa_adder.sv
+FD:/214/ctmt/lab/Milestone2_Single Cycle/00_src/ksa_adder.sv
+!i122 480
+L0 1 66
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/ksa_adder.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/ksa_adder.sv|
+!i113 1
+R7
+R8
+vlsu
+R0
+R1
+!i10b 1
+!s100 `<32=:cQ:FRmUfgFVQLz60
+R2
+I7;nUm1BGRbYLVF?KTP_3C3
+R3
+S1
+R4
+w1729610676
+8D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/lsu.sv
+FD:/214/ctmt/lab/Milestone2_Single Cycle/00_src/lsu.sv
+!i122 481
+L0 1 26
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/lsu.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/lsu.sv|
+!i113 1
+R7
+R8
+vPC
+R0
+R1
+!i10b 1
+!s100 `?RDT1b@:c:d1EOd^KEhb1
+R2
+IV:[[0nK`a^iIANbaiOKYT3
+R3
+S1
+R4
+w1729526143
+8D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/PC.sv
+FD:/214/ctmt/lab/Milestone2_Single Cycle/00_src/PC.sv
+!i122 482
+L0 1 30
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/PC.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/PC.sv|
+!i113 1
+R7
+R8
+n@p@c
+vpg_block
+R0
+R1
+!i10b 1
+!s100 D43mdYiXHZXbXO_d:So@<1
+R2
+I_TK45IFd5OQP[edf_MFIS1
+R3
+S1
+R4
+R11
+R12
+R13
+!i122 478
+L0 2 9
+R5
+r1
+!s85 0
+31
+R6
+R14
+R15
+!i113 1
+R7
+R8
+vregfile
+R0
+R1
+!i10b 1
+!s100 GXTo`f9@m9m_`CLj:CM?63
+R2
+I;dz]o<ZS?I0K]i=8?61b@3
+R3
+S1
+R4
+w1730519617
+8D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/regfile.sv
+FD:/214/ctmt/lab/Milestone2_Single Cycle/00_src/regfile.sv
+!i122 483
+L0 1 29
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/regfile.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/00_src/regfile.sv|
+!i113 1
+R7
+R8
+vsum_block
+R0
+R1
+!i10b 1
+!s100 BiI=ikaQ2bWC><aJPblN^0
+R2
+Ii5I81=[8n<_W;g=>he20?1
+R3
+S1
+R4
+R11
+R12
+R13
+!i122 478
+L0 24 8
+R5
+r1
+!s85 0
+31
+R6
+R14
+R15
+!i113 1
+R7
+R8
+vtestbench
+R0
+R1
+!i10b 1
+!s100 VkSTNGURDYIWgA]:z:iUN0
+R2
+Ibi>;h53UXo3L^ejJ:dh<l3
+R3
+S1
+R4
+w1730529161
+8D:/214/ctmt/lab/Milestone2_Single Cycle/01_bench/comparator_tb.sv
+FD:/214/ctmt/lab/Milestone2_Single Cycle/01_bench/comparator_tb.sv
+!i122 476
+L0 1 42
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/214/ctmt/lab/Milestone2_Single Cycle/01_bench/comparator_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/214/ctmt/lab/Milestone2_Single Cycle/01_bench/comparator_tb.sv|
+!i113 1
+R7
+R8

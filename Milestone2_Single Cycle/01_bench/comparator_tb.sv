@@ -5,19 +5,17 @@ module testbench #(
     logic eq, lt;
     logic un;
 
-    logic[1:0] set_eq;
     logic[1:0] expected;
-    int num_errors = 0;
+    int un_errors = 0;
+    int s_errors = 0;
 
-    comparator #(DATA_SIZE) dut(a, b, un, eq, lt);
+    brc #(DATA_SIZE) dut(a, b, un, eq, lt);
 
     initial begin
-        for (int i = 0; i < 2**DATA_SIZE; i++) begin
-            {a, b, set_eq, un} = $urandom;
-            if (set_eq === 0)     // 25% chance to set b = a
-                b = a;
-        // compare sign numbers
-            if (un == 0) begin
+        for (int i = 0; i < 2**17; i++) begin
+            {a, b, un} = $urandom;
+            // compare sign numbers
+            if (!un) begin
                 expected = {a == b, a < b};
             end else begin
                 expected = {a == b, $signed(a) < $signed(b)};
@@ -25,12 +23,20 @@ module testbench #(
             
             #1;
             if (expected !== {eq, lt}) begin
-                $display("Error: a = %b, b = %b, result = %b, expected = %b",
-                        a, b, {eq, lt}, expected);
-                num_errors++;
+                if(un == 0) begin
+                    $display("Error: un = %b, a = %d, b = %d, result = %b, expected = %b",
+                            un, a, b, {eq, lt}, expected);
+                    un_errors++;
+                end
+                else begin
+                    $display("Error: un = %b, a = %d, b = %d, result = %b, expected = %b",
+                            un, $signed(a), $signed(b), {eq, lt}, expected);
+                    s_errors++;
+                end
             end
             #1;
         end
-        $display("Test finished with %3d errors.", num_errors);
+        $display("Test finished with %3d unsigned errors.", un_errors);
+        $display("Test finished with %3d signed errors.", s_errors);
     end
 endmodule
