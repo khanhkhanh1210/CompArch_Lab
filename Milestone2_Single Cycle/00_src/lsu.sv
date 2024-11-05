@@ -62,16 +62,16 @@ module lsu
         end      
     end 
 	
-    // De-mux for st_en_i
+    // De-mux for i_lsu_wren
     always_comb begin 
         case (addr_sel) 
             DATA_MEMORY : begin 
-                dmux_dmem_st_en   = st_en_i;
+                dmux_dmem_st_en   = i_lsu_wren;
                 dmux_oper_st_en   = 1'b0;
             end
             OUT_PERIPHERALS : begin 
                 dmux_dmem_st_en   = 1'b0;
-                dmux_oper_st_en   = st_en_i;           
+                dmux_oper_st_en   = i_lsu_wren;           
             end
             IN_PERIPHERALS : begin 
                 dmux_dmem_st_en   = 1'b0;
@@ -89,7 +89,7 @@ module lsu
     // Input peripherals
     always_comb begin 
         if ( i_lsu_addr[15:0] == 16'h0900) begin 
-            input_per_reg = io_sw_i;
+            input_per_reg = i_io_sw;
         end
         else begin 
             input_per_reg  = 32'b1;
@@ -109,14 +109,14 @@ module lsu
     always_ff @(posedge clk_i) begin
         if (dmux_oper_st_en) begin
             case ( i_lsu_addr[15:0])
-                16'h0800 : output_per_reg[0] <= st_data_i[6:0];
-                16'h0810 : output_per_reg[1] <= st_data_i[6:0];
-                16'h0820 : output_per_reg[2] <= st_data_i[6:0];
-                16'h0830 : output_per_reg[3] <= st_data_i[6:0];
-                16'h0840 : output_per_reg[4] <= st_data_i[6:0];
-                16'h0850 : output_per_reg[5] <= st_data_i[6:0];
-                16'h0860 : output_per_reg[6] <= st_data_i[6:0];
-                16'h0870 : output_per_reg[7] <= st_data_i[6:0];
+                16'h0800 : output_per_reg[0] <= i_st_data[6:0];
+                16'h0810 : output_per_reg[1] <= i_st_data[6:0];
+                16'h0820 : output_per_reg[2] <= i_st_data[6:0];
+                16'h0830 : output_per_reg[3] <= i_st_data[6:0];
+                16'h0840 : output_per_reg[4] <= i_st_data[6:0];
+                16'h0850 : output_per_reg[5] <= i_st_data[6:0];
+                16'h0860 : output_per_reg[6] <= i_st_data[6:0];
+                16'h0870 : output_per_reg[7] <= i_st_data[6:0];
             endcase
         end
     end
@@ -142,7 +142,7 @@ module lsu
         .rst_ni     (rst_ni),
         .paddr_i    ( i_lsu_addr[11:0]),
         .sel_mod    (sel_mod), 
-        .pwdata_i   (st_data_i),
+        .pwdata_i   (i_st_data),
         .pwrite_i   (dmux_dmem_st_en),
         .penable_i  (1'b1),
         .psel_i     (1'b1),
