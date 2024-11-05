@@ -12,26 +12,27 @@ module lsu
 )
 (
     // Inputs
-    input     logic              clk_i,
-    input     logic              rst_ni,
-    input     logic    [31:0]    addr_i,
-    input     logic    [31:0]    st_data_i,
-    input     logic              st_en_i, // 1 to write and 0 to read
-    input     logic    [31:0]    io_sw_i,
+    input     logic              i_clk,
+    input     logic              i_rst,
+    input     logic    [31:0]    i_lsu_addr,
+    input     logic    [31:0]    i_st_data,
+    input     logic              i_lsu_wren, // 1 to write and 0 to read
+    input     logic    [31:0]    i_io_sw, // switch
     input     logic    [2:0]     sel_mod,
+    input     logic    [3:0]     i_io_btn, //buttons
     // Outputs
-    output    logic    [31:0]    ld_data_o,
-    output    logic    [31:0]    io_lcd_o,
-    output    logic    [31:0]    io_ledg_o,
-    output    logic    [31:0]    io_ledr_o,
-    output    logic    [6:0]     io_hex0_o,
-    output    logic    [6:0]     io_hex1_o,
-    output    logic    [6:0]     io_hex2_o,
-    output    logic    [6:0]     io_hex3_o,
-    output    logic    [6:0]     io_hex4_o,
-    output    logic    [6:0]     io_hex5_o,
-    output    logic    [6:0]     io_hex6_o,
-    output    logic    [6:0]     io_hex7_o
+    output    logic    [31:0]    o_ld_data,
+    output    logic    [31:0]    o_io_lcd,
+    output    logic    [31:0]    o_io_ledg,
+    output    logic    [31:0]    o_io_ledr,
+    output    logic    [6:0]     o_io_hex0,
+    output    logic    [6:0]     o_io_hex1,
+    output    logic    [6:0]     o_io_hex2,
+    output    logic    [6:0]     o_io_hex3,
+    output    logic    [6:0]     o_io_hex4,
+    output    logic    [6:0]     o_io_hex5,
+    output    logic    [6:0]     o_io_hex6,
+    output    logic    [6:0]     o_io_hex7
 );
 
     logic              [1:0]     addr_sel;
@@ -42,18 +43,18 @@ module lsu
     logic                        dmux_dmem_st_en;
     logic                        dmux_oper_st_en;
     logic              [31:0]    input_per_reg;
-    logic              [6:0]     output_per_reg   [7:0]; // 7-bit wide for each hex display
+    logic              [6:0]     output_per_reg [7:0]; // 7-bit wide for each hex display
     logic              [3:0]     pstrb;
 
     // Generate addr_sel
     always_comb begin
-        if ((addr_i[15:8] == 8'h00) || (addr_i[15:8] == 8'h01) || (addr_i[15:8] == 8'h02) || (addr_i[15:8] == 8'h03) || (addr_i[15:8] == 8'h04) || (addr_i[15:8] == 8'h05) || (addr_i[15:8] == 8'h06) || (addr_i[15:8] == 8'h07)) begin 
+        if (( i_lsu_addr[15:8] == 8'h00) || ( i_lsu_addr[15:8] == 8'h01) || ( i_lsu_addr[15:8] == 8'h02) || ( i_lsu_addr[15:8] == 8'h03) || ( i_lsu_addr[15:8] == 8'h04) || ( i_lsu_addr[15:8] == 8'h05) || ( i_lsu_addr[15:8] == 8'h06) || ( i_lsu_addr[15:8] == 8'h07)) begin 
             addr_sel = DATA_MEMORY;
         end 
-        else if (addr_i[15:8] == 8'h08) begin 
+        else if ( i_lsu_addr[15:8] == 8'h08) begin 
             addr_sel = OUT_PERIPHERALS;
         end
-        else if (addr_i[15:8] == 8'h09) begin 
+        else if ( i_lsu_addr[15:8] == 8'h09) begin 
             addr_sel = IN_PERIPHERALS;
         end
         else begin 
@@ -87,7 +88,7 @@ module lsu
 
     // Input peripherals
     always_comb begin 
-        if (addr_i[15:0] == 16'h0900) begin 
+        if ( i_lsu_addr[15:0] == 16'h0900) begin 
             input_per_reg = io_sw_i;
         end
         else begin 
@@ -96,7 +97,7 @@ module lsu
     end
     
     always_comb begin 
-        if (addr_i[15:0] == 16'h0900) begin
+        if ( i_lsu_addr[15:0] == 16'h0900) begin
             iper_mux_lddata = input_per_reg;
         end
         else begin 
@@ -107,7 +108,7 @@ module lsu
     // Output peripherals
     always_ff @(posedge clk_i) begin
         if (dmux_oper_st_en) begin
-            case (addr_i[15:0])
+            case ( i_lsu_addr[15:0])
                 16'h0800 : output_per_reg[0] <= st_data_i[6:0];
                 16'h0810 : output_per_reg[1] <= st_data_i[6:0];
                 16'h0820 : output_per_reg[2] <= st_data_i[6:0];
@@ -139,7 +140,7 @@ module lsu
     data_memory data_memory_inst (
         .clk_i      (clk_i),
         .rst_ni     (rst_ni),
-        .paddr_i    (addr_i[11:0]),
+        .paddr_i    ( i_lsu_addr[11:0]),
         .sel_mod    (sel_mod), 
         .pwdata_i   (st_data_i),
         .pwrite_i   (dmux_dmem_st_en),
@@ -160,41 +161,41 @@ module lsu
             RESERVED        : ld_data = 32'b1;
             default         : ld_data = 32'hCAFECAFE;
         endcase
-    end 
+    end
 
     always_comb begin 
         case (sel_mod[1:0]) 
             BYTE : begin
                 if (sel_mod[2] == 1'b1) begin 
-                    ld_data_o = ld_data & 32'h000000FF;
+                    o_ld_data = ld_data & 32'h000000FF;
                 end 
                 else begin 
                     if (ld_data[7] == 1'b1) begin 
-                        ld_data_o = ld_data & 32'h000000FF | 32'hFFFFFF00;
+                        o_ld_data = ld_data & 32'h000000FF | 32'hFFFFFF00;
                     end
                     else begin 
-                        ld_data_o = ld_data & 32'h000000FF;
+                        o_ld_data = ld_data & 32'h000000FF;
                     end
                 end
             end
             HWORD : begin
                 if (sel_mod[2] == 1'b1) begin 
-                    ld_data_o = ld_data & 32'h0000FFFF;
+                    o_ld_data= ld_data & 32'h0000FFFF;
                 end 
                 else begin 
                     if (ld_data[15] == 1'b1) begin 
-                        ld_data_o = ld_data & 32'h0000FFFF | 32'hFFFF0000;
+                        o_ld_data= ld_data & 32'h0000FFFF | 32'hFFFF0000;
                     end
                     else begin 
-                        ld_data_o = ld_data & 32'h0000FFFF;
+                        o_ld_data= ld_data & 32'h0000FFFF;
                     end
                 end
             end
             WORD : begin 
-                ld_data_o = ld_data;
+                o_ld_data = ld_data;
             end
             default : begin 
-                ld_data_o = 32'hCAFECAFE;
+                o_ld_data = 32'hCAFECAFE;
             end
         endcase
     end
