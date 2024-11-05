@@ -1,0 +1,15 @@
+{D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv} {1 {vlog -work work -sv -stats=none {D:/214/ctmt/lab/vending machine/vedingmachine_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module vending_testbench
+
+Top level modules:
+	vending_testbench
+
+} {} {}} {D:/214/ctmt/lab/vending machine/vending_machine.sv} {1 {vlog -work work -sv -stats=none {D:/214/ctmt/lab/vending machine/vending_machine.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module vending_machine
+
+Top level modules:
+	vending_machine
+
+} {} {}}
