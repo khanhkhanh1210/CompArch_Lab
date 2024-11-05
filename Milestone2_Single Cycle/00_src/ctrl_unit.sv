@@ -60,19 +60,19 @@ module ctrl_unit
 (
     //input 
     //input   logic           clk_i,
-    input   logic   [31:0]  instr_i,          // the current instruction 
-    input   logic           bl_less_i,        // the "less" result of the branch comparaton
-    input   logic           bl_equal_i,       // the "equal" result of the branch comparaton
+    input   logic   [31:0]  instr,          // the current instruction 
+    input   logic           br_less,        // the "less" result of the branch comparaton
+    input   logic           br_equal,       // the "equal" result of the branch comparaton
     
     //output
-    output  logic           bl_sel_o,        // select signal between pc+4:0 or pc ALU:1
-    output  logic           bl_unsigned_o,   // 1 if the two operands are unsigned.
-    output  logic           rd_wren_o,       // 1 if writing to the RegFile, otherwise 0
-    output  logic           op_a_sel_o,      //choose between rs1_data (0) or pc (1) to wire into operand_a of ALU.
-    output  logic           op_b_sel_o,      // choose between rs2_data (0) or imm (1) to wire into operand_b of ALU
-    output  logic   [3:0]   alu_op_o,        // an operation that the ALU has to perform
-    output  logic           mem_wren_o,      //1  write LSU, otherwise 0 
-    output  logic   [1:0]   wb_sel_o,         // choose between  dalu_data (0), ld_data (1), or pc_four (2) to write back into rd_data of RegFile
+    output  logic           pc_sel,        // select signal between pc+4:0 or pc ALU:1
+    output  logic           br_un,   // 1 if the two operands are unsigned.
+    output  logic           rd_wren,       // 1 if writing to the RegFile, otherwise 0
+    output  logic           opa_sel,      //choose between rs1_data (0) or pc (1) to wire into operand_a of ALU.
+    output  logic           opb_sel,      // choose between rs2_data (0) or imm (1) to wire into operand_b of ALU
+    output  logic   [3:0]   alu_op,        // an operation that the ALU has to perform
+    output  logic           mem_wren,      //1  write LSU, otherwise 0 
+    output  logic   [1:0]   wb_sel,         // choose between  dalu_data (0), ld_data (1), or pc_four (2) to write back into rd_data of RegFile
 	output  logic          insn_vld
 );
 
