@@ -1,30 +1,21 @@
 module lsu 
-#(
-    // Parameter for data memory
-    parameter BYTE          = 2'b00,
-    parameter HWORD         = 2'b01,
-    parameter WORD          = 2'b10,
-    // Parameter for memory mapping 
-    parameter DATA_MEMORY     = 2'b00,
-    parameter OUT_PERIPHERALS = 2'b01,
-    parameter IN_PERIPHERALS  = 2'b10,
-    parameter RESERVED        = 2'b11
-)
 (
-    // Inputs
+    //input
     input     logic              i_clk,
     input     logic              i_rst,
-    input     logic    [31:0]    i_lsu_addr,
+    input     logic    [15:0]    i_lsu_addr,
     input     logic    [31:0]    i_st_data,
-    input     logic              i_lsu_wren, // 1 to write and 0 to read
-    input     logic    [31:0]    i_io_sw, // switch
-    input     logic    [2:0]     sel_mod,
-    input     logic    [3:0]     i_io_btn, //buttons
-    // Outputs
+    input     logic              i_lsu_wren, //1 to write and 0 to read
+    input     logic    [31:0]    i_io_sw,
+    input     logic    [3:0]     i_io_btn,
+    //output 
     output    logic    [31:0]    o_ld_data,
+
     output    logic    [31:0]    o_io_lcd,
     output    logic    [31:0]    o_io_ledg,
     output    logic    [31:0]    o_io_ledr,
+
+    //output for hex display
     output    logic    [6:0]     o_io_hex0,
     output    logic    [6:0]     o_io_hex1,
     output    logic    [6:0]     o_io_hex2,
@@ -32,185 +23,78 @@ module lsu
     output    logic    [6:0]     o_io_hex4,
     output    logic    [6:0]     o_io_hex5,
     output    logic    [6:0]     o_io_hex6,
-    output    logic    [6:0]     o_io_hex7
+    output    logic    [6:0]     o_io_hex7,
+
+    //output input for SRAM
+    output logic [17:0]   SRAM_ADDR,
+    inout  logic [15:0]   SRAM_DQ ,
+    output logic          SRAM_CE_N,
+    output logic          SRAM_WE_N,
+    output logic          SRAM_LB_N,
+    output logic          SRAM_UB_N,
+    input  logic          SRAM_OE_N,
+    output logic          o_ACK
 );
-
-    logic              [1:0]     addr_sel;
-    // Internal signals
-    logic              [31:0]    dmem_mux_lddata; // Connects dmem output to mux input  
-    logic              [31:0]    oper_mux_lddata;
-    logic              [31:0]    iper_mux_lddata;
-    logic                        dmux_dmem_st_en;
-    logic                        dmux_oper_st_en;
-    logic              [31:0]    input_per_reg;
-    logic              [6:0]     output_per_reg [7:0]; // 7-bit wide for each hex display
-    logic              [3:0]     pstrb;
-
-    // Generate addr_sel
-    always_comb begin
-        if (( i_lsu_addr[15:8] == 8'h00) || ( i_lsu_addr[15:8] == 8'h01) || ( i_lsu_addr[15:8] == 8'h02) || ( i_lsu_addr[15:8] == 8'h03) || ( i_lsu_addr[15:8] == 8'h04) || ( i_lsu_addr[15:8] == 8'h05) || ( i_lsu_addr[15:8] == 8'h06) || ( i_lsu_addr[15:8] == 8'h07)) begin 
-            addr_sel = DATA_MEMORY;
-        end 
-        else if ( i_lsu_addr[15:8] == 8'h08) begin 
-            addr_sel = OUT_PERIPHERALS;
-        end
-        else if ( i_lsu_addr[15:8] == 8'h09) begin 
-            addr_sel = IN_PERIPHERALS;
-        end
-        else begin 
-            addr_sel = RESERVED;
-        end      
-    end 
-	
-    // De-mux for i_lsu_wren
-    always_comb begin 
-        case (addr_sel) 
-            DATA_MEMORY : begin 
-                dmux_dmem_st_en   = i_lsu_wren;
-                dmux_oper_st_en   = 1'b0;
-            end
-            OUT_PERIPHERALS : begin 
-                dmux_dmem_st_en   = 1'b0;
-                dmux_oper_st_en   = i_lsu_wren;           
-            end
-            IN_PERIPHERALS : begin 
-                dmux_dmem_st_en   = 1'b0;
-                dmux_oper_st_en   = 1'b0;       
-            end 
-            RESERVED : begin 
-                dmux_dmem_st_en   = 1'b0;
-                dmux_oper_st_en   = 1'b0;  
-            end 
-            default : begin 
-            end 
-        endcase
-    end
-
-    // Input peripherals
-    always_comb begin 
-        if ( i_lsu_addr[15:0] == 16'h0900) begin 
-            input_per_reg = i_io_sw;
-        end
-        else begin 
-            input_per_reg  = 32'b1;
-        end 
-    end
+    logic output_buffer_en, data_memory_en, input_buffer_en;
+    // output peripherals from 0x7000 to 0x77FF
+    assign output_buffer_en = (i_lsu_addr[15:6] == 10'b0111 0000 00);
     
-    always_comb begin 
-        if ( i_lsu_addr[15:0] == 16'h0900) begin
-            iper_mux_lddata = input_per_reg;
-        end
-        else begin 
-            iper_mux_lddata = 32'hCAFECAFE;
-        end 
-    end 
-    
-    // Output peripherals
-    always_ff @(posedge clk_i) begin
-        if (dmux_oper_st_en) begin
-            case ( i_lsu_addr[15:0])
-                16'h0800 : output_per_reg[0] <= i_st_data[6:0];
-                16'h0810 : output_per_reg[1] <= i_st_data[6:0];
-                16'h0820 : output_per_reg[2] <= i_st_data[6:0];
-                16'h0830 : output_per_reg[3] <= i_st_data[6:0];
-                16'h0840 : output_per_reg[4] <= i_st_data[6:0];
-                16'h0850 : output_per_reg[5] <= i_st_data[6:0];
-                16'h0860 : output_per_reg[6] <= i_st_data[6:0];
-                16'h0870 : output_per_reg[7] <= i_st_data[6:0];
-            endcase
-        end
-    end
+    // data memory from 0x0000 to 0x3FFF
+    assign data_memory_en = (i_lsu_addr[15:14] == 2'd0);
 
-    // Data memory control
-    always_comb begin
-        if (sel_mod[1:0] == BYTE) begin
-            pstrb = 4'b0001;
-        end 
-        else if (sel_mod[1:0] == HWORD) begin
-            pstrb = 4'b0011;
-        end
-        else if (sel_mod[1:0] == WORD) begin
-            pstrb = 4'b1111;
-        end
-        else begin
-            pstrb = 4'b0000;
-        end
-    end
+    // input buffer from 0x7800 to 0x781F
+    assign input_buffer_en = (i_lsu_addr[15:5] == 11'b0111 1000 000);
 
-    data_memory data_memory_inst (
-        .clk_i      (clk_i),
-        .rst_ni     (rst_ni),
-        .paddr_i    ( i_lsu_addr[11:0]),
-        .sel_mod    (sel_mod), 
-        .pwdata_i   (i_st_data),
-        .pwrite_i   (dmux_dmem_st_en),
-        .penable_i  (1'b1),
-        .psel_i     (1'b1),
-        .pstrb_i    (pstrb),
-        .pready_o   (),
-        .prdata_o   (dmem_mux_lddata)
+    // output buffer
+    output_buffer output_buffer(
+        .i_clk(i_clk),
+        .i_rst(i_rst),
+        .i_lsu_wren(i_lsu_wren & output_buffer_en),
+        .i_lsu_addr(i_lsu_addr[5:0]),
+        .i_st_data(i_st_data),
+        .o_io_hex0(o_io_hex0),
+        .o_io_hex1(o_io_hex1),
+        .o_io_hex2(o_io_hex2),
+        .o_io_hex3(o_io_hex3),
+        .o_io_hex4(o_io_hex4),
+        .o_io_hex5(o_io_hex5),
+        .o_io_hex6(o_io_hex6),
+        .o_io_hex7(o_io_hex7),
+        .o_io_lcd(o_io_lcd),
+        .o_io_ledg(o_io_ledg),
+        .o_io_ledr(o_io_ledr),
+        .o_ld_data(o_ld_data)
     );
 
-    // Mux for ld_data_o
-    logic [31:0] ld_data;
-    always_comb begin 
-        case (addr_sel)
-            DATA_MEMORY     : ld_data = dmem_mux_lddata;
-            OUT_PERIPHERALS : ld_data = oper_mux_lddata;
-            IN_PERIPHERALS  : ld_data = iper_mux_lddata;
-            RESERVED        : ld_data = 32'b1;
-            default         : ld_data = 32'hCAFECAFE;
-        endcase
-    end
+    // input buffer
+    input_buffer input_buffer(
+        .i_clk(i_clk),
+        .i_rst(i_rst),
+        .i_io_sw(i_io_sw),
+        .o_ld_data(o_ld_data),
+        .i_io_btn(i_io_btn),
+        .i_lsu_wren(i_lsu_wren & input_buffer_en)
+    );
 
-    always_comb begin 
-        case (sel_mod[1:0]) 
-            BYTE : begin
-                if (sel_mod[2] == 1'b1) begin 
-                    o_ld_data = ld_data & 32'h000000FF;
-                end 
-                else begin 
-                    if (ld_data[7] == 1'b1) begin 
-                        o_ld_data = ld_data & 32'h000000FF | 32'hFFFFFF00;
-                    end
-                    else begin 
-                        o_ld_data = ld_data & 32'h000000FF;
-                    end
-                end
-            end
-            HWORD : begin
-                if (sel_mod[2] == 1'b1) begin 
-                    o_ld_data= ld_data & 32'h0000FFFF;
-                end 
-                else begin 
-                    if (ld_data[15] == 1'b1) begin 
-                        o_ld_data= ld_data & 32'h0000FFFF | 32'hFFFF0000;
-                    end
-                    else begin 
-                        o_ld_data= ld_data & 32'h0000FFFF;
-                    end
-                end
-            end
-            WORD : begin 
-                o_ld_data = ld_data;
-            end
-            default : begin 
-                o_ld_data = 32'hCAFECAFE;
-            end
-        endcase
-    end
+    // data memory
 
-    // Peripherals output
-   // assign io_lcd_o   = output_per_reg[10];
-    //assign io_ledg_o  = output_per_reg[9];
-    //assign io_ledr_o  = output_per_reg[8];
-    assign io_hex0_o  = output_per_reg[0];
-    assign io_hex1_o  = output_per_reg[1];
-    assign io_hex2_o  = output_per_reg[2];
-    assign io_hex3_o  = output_per_reg[3];
-    assign io_hex4_o  = output_per_reg[4];
-    assign io_hex5_o  = output_per_reg[5];
-    assign io_hex6_o  = output_per_reg[6];
-    assign io_hex7_o  = output_per_reg[7];
+    sram_IS61WV25616_controller_32b_5lr data_memory(
+        .i_ADDR(i_lsu_addr),
+        .i_WDATA(i_st_data),
+        .i_BMASK(4'b1111),
+        .i_WREN(i_lsu_wren & data_memory_en),
+        .i_RDEN(~i_lsu_wren & data_memory_en),
+        .o_RDATA(o_ld_data),
+        .o_ACK(o_ACK),
+        .SRAM_ADDR(SRAM_ADDR),
+        .SRAM_DQ(SRAM_DQ),
+        .SRAM_CE_N(SRAM_CE_N),
+        .SRAM_WE_N(SRAM_WE_N),
+        .SRAM_LB_N(SRAM_LB_N),
+        .SRAM_UB_N(SRAM_UB_N),
+        .SRAM_OE_N(SRAM_OE_N),
+        .i_clk(i_clk),
+        .i_reset(i_rst)
+    );
 
-endmodule : lsu
+endmodule
