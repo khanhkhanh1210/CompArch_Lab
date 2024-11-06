@@ -38,13 +38,13 @@ module lsu
 );
     logic output_buffer_en, data_memory_en, input_buffer_en;
     // output peripherals from 0x7000 to 0x77FF
-    assign output_buffer_en = (i_lsu_addr[15:6] == 10'b0111000000);
+    assign output_buffer_en = (i_lsu_addr[15:6] == 10'b0111 0000 00);
     
     // data memory from 0x0000 to 0x3FFF
     assign data_memory_en = (i_lsu_addr[15:14] == 2'd0);
 
     // input buffer from 0x7800 to 0x781F
-    assign input_buffer_en = (i_lsu_addr[15:5] == 11'b01111000000);
+    assign input_buffer_en = (i_lsu_addr[15:5] == 11'b0111 1000 000);
 
     // output buffer
     output_buffer output_buffer(

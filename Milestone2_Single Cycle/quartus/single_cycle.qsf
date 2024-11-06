@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CGXFC7C7F23C8
-set_global_assignment -name TOP_LEVEL_ENTITY alu
+set_global_assignment -name TOP_LEVEL_ENTITY ctrl_unit
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:09:59  OCTOBER 18, 2024"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
@@ -468,10 +468,13 @@ set_location_assignment PIN_V17 -to FL_CE_N
 set_location_assignment PIN_W17 -to FL_OE_N
 set_location_assignment PIN_AA18 -to FL_RST_N
 set_location_assignment PIN_AA17 -to FL_WE_N
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/singlecycle.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/inst_memory.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/data_memory.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/ctrl_unit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/sram_IS61WV25616_controller_32b_5lr.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/sram_IS61WV25616_controller_32b_3lr.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/immgen.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/compare_32bit_s.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/comparator.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/alu.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../00_src/barrel_shifter.sv
