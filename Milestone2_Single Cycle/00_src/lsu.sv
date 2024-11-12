@@ -52,6 +52,7 @@ module lsu (  // A memory for loading(read) or storing(write) data words
       .i_dmem_wr(dmem_wren),
       .o_ld_data(dmem_data)
   );*/
+  
   //input buffer instantiation
 
   input_buffer IN_BUFF (
