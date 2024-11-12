@@ -68,7 +68,11 @@ module ctrl_unit
                                                      
             B_FORMAT: begin     
                 insn_vld = 1'b1;
-                pc_sel = (br_equal ^ instr[12]&!instr[14]) | (br_less ^ instr[12]); // branch select signal
+                casex(instr[14:12])
+                    3'b00x: pc_sel = br_equal; // pc = pc + imm if equal
+                    3'b10x: pc_sel = br_less; //  pc = pc + imm if less
+                    3'b11x: pc_sel = br_less; //  pc = pc + imm if greater
+                endcase
                 br_un = instr[13];                        // branch signed or unsigned
                 rd_wren = 1'b0;                             // write disable
                 opa_sel = 1'b1;                             // operand A select from pc
