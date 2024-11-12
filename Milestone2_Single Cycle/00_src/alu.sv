@@ -9,7 +9,7 @@ module alu
     input   logic   [WIDTH-1:0]     i_operand_b,
     
     output  logic   [WIDTH-1:0]     o_alu_data,
-    output  logic                   insn_vld
+    output  logic                   o_insn_vld
 );
 
     localparam A_ADD  = 4'b0000;
@@ -56,17 +56,50 @@ module alu
 
     always_comb begin
         case(i_alu_op)
-            A_ADD: o_alu_data = add_sub_result;
-            A_SUB: o_alu_data = add_sub_result;
-            A_SLT: o_alu_data = {31'b0,blarger};              
-            A_SLTU: o_alu_data = {31'b0,blarger};
-            A_XOR: o_alu_data = i_operand_a ^ i_operand_b;
-            A_OR: o_alu_data = i_operand_a | i_operand_b;
-            A_AND: o_alu_data = i_operand_a & i_operand_b;
-            A_SLL: o_alu_data = barrel_shifter_result;
-            A_SRL: o_alu_data = barrel_shifter_result;
-            A_SRA: o_alu_data = barrel_shifter_result;
-            default: o_alu_data = 0;
+            A_ADD: begin
+                o_alu_data = add_sub_result;
+                o_insn_vld = 1;
+            end
+            A_SUB: begin
+                o_alu_data = add_sub_result;
+                o_insn_vld = 1;
+            end
+            A_SLT: begin
+                o_alu_data = {31'b0,blarger};     
+                o_insn_vld = 1;
+            end         
+            A_SLTU: begin
+                o_alu_data = {31'b0,blarger};
+                o_insn_vld = 1;
+            end
+            A_XOR: begin
+                o_alu_data = i_operand_a ^ i_operand_b;
+                o_insn_vld = 1;
+            end
+            A_OR: begin
+                o_alu_data = i_operand_a | i_operand_b;
+                o_insn_vld = 1;
+            end
+            A_AND: begin
+                o_alu_data = i_operand_a & i_operand_b;
+                o_insn_vld = 1;
+            end
+            A_SLL: begin
+                o_alu_data = barrel_shifter_result;
+                o_insn_vld = 1;
+            end
+            A_SRL: begin
+                o_alu_data = barrel_shifter_result;
+                o_insn_vld = 1;
+            end
+            A_SRA: begin
+                o_alu_data = barrel_shifter_result;
+                o_insn_vld = 1;
+            end
+            default: begin
+                o_alu_data = 0;
+                o_insn_vld = 0;
+            end
         endcase
     end
 endmodule
