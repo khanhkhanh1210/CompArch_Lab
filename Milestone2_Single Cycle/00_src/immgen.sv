@@ -1,4 +1,3 @@
-/* verilator lint_off UNUSED */
 module immgen
 (
     input   logic   [31:0]    instr_i,
