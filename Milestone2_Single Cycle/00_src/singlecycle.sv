@@ -13,32 +13,27 @@ module singlecycle
     parameter                    RESERVED        = 2'b11
 )
 
-(
-
-    //input   logic   [31:0]  io_sw_i  ,
-    //output  logic   [31:0]  io_lcd_o ,
-    //output  logic   [31:0]  io_ledg_o,
-    //output  logic   [31:0]  io_ledr_o,
-    output  logic   [31:0]  io_hex0_o,
-    output  logic   [31:0]  io_hex1_o,
-    //output  logic   [31:0]  io_hex2_o,
-    //output  logic   [31:0]  io_hex3_o,
-    //output  logic   [31:0]  io_hex4_o,
-    /*output  logic   [31:0]  io_hex5_o,
-    output  logic   [31:0]  io_hex6_o,
-    output  logic   [31:0]  io_hex7_o,*/  
-	 output  logic   [5:0]   rs1_addr,
-	 output  logic   [31:0]  instr_check,
-    output  logic   [31:0]  alu_data_check,
-    output  logic   [31:0]  rs1_data_check,
-    output  logic   [31:0]  rs2_data_check,
-    //output  logic           mem_wren_check,
-    //output  logic           bl_less_check,
-    //output  logic           bl_equal_check,
-    output  logic   [31:0]       imm_check,
-        //input 
+(   //input
     input   logic           clk_i   ,
-    input   logic           rst_ni
+    input   logic           rst_ni  ,
+    input   logic   [31:0]  i_io_sw ,    
+    input   logic   [3:0]   i_io_btn,
+
+    //output 
+    output  logic   [31:0]  o_pc_debug ,
+    output  logic   [31:0]  o_io_ledg,
+    output  logic   [31:0]  o_io_ledr,
+    output  logic   [6:0]  o_io_hex0,
+    output  logic   [6:0]  o_io_hex1,
+    output  logic   [6:0]  o_io_hex2,
+    output  logic   [6:0]  o_io_hex3,
+    output  logic   [6:0]  o_io_hex4,
+    output  logic   [6:0]  o_io_hex5,
+    output  logic   [6:0]  o_io_hex6,
+    output  logic   [6:0]  o_io_hex7,  
+	output  logic          o_insn_vld,
+    output  logic   [31:0] o_io_lcd 
+       
 );
     logic   [31:0]  instr;    
     logic           bl_less;    
