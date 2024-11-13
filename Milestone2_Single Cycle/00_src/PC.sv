@@ -3,11 +3,12 @@ module PC(
     input  logic        i_rst,       // Reset
 
     input  logic [31:0] i_pc,        // Program counter
-    input  logic        sel,         // Select PC + 4 or PC
+    input  logic        sel,         // Select PC + 4 if sel = 1, else select i_pc
 
-    output logic [31:0] pc_o      // Next program counter
+    output logic [31:0] pc_o,      // Next program counter
+    output logic [31:0] pc_4      // Program counter + 4
 );
-    logic [31:0] pc_next, pc_4;   
+    logic [31:0] pc_next;   
 
     ksa_adder #(32) adder (pc_o, 32'h4, 1'b0, pc_4);
 

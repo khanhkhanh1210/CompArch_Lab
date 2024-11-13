@@ -1,5 +1,4 @@
-module imem #(
-)(
+module imem (
     input  logic        clk         ,  // Clock
     input  logic        rst_n       ,  // Reset, active low
     input  logic [31:0] i_imem_addr ,  // Địa chỉ đầu vào 32-bit

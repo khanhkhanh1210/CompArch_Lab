@@ -18,8 +18,6 @@ module ctrl_unit
 );
 
 // localparam format command
-    // localparam       R_FORMAT            =   7'b0110011;
-    // localparam       I_FORMAT_CALCULATE  =   7'b0010011;
     localparam       IR_FORMAT           =   7'b0x10011;
     localparam       I_FORMAT_LOAD       =   7'b0000011;
     localparam       S_FORMAT            =   7'b0100011;

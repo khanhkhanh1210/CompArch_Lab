@@ -32,8 +32,7 @@ module singlecycle
     output  logic   [6:0]   o_io_hex6,
     output  logic   [6:0]   o_io_hex7,  
 	output  logic           o_insn_vld,
-    output  logic   [31:0]  o_io_lcd,
-    output  logic           insn_vld
+    output  logic   [31:0]  o_io_lcd
 );
     logic   [31:0]  instr;                      // Instruction
     logic           br_less;                    // Branch less signal
@@ -46,7 +45,7 @@ module singlecycle
     logic   [3:0]   alu_op;
     logic           mem_wren;   
     logic   [1:0]   wb_sel;     
-    logic   [31:0]  pc, pc_4;
+    logic   [31:0]  pc;
     logic   [31:0]  imm;
     logic   [31:0]  rs1_data;
     logic   [31:0]  rs2_data;
@@ -57,6 +56,13 @@ module singlecycle
     logic   [31:0]  ld_data;
     logic   [31:0]  wb_data;
    
+    assign alu_data_check = alu_data;
+    assign rs1_data_check = rs1_data;
+    assign rs2_data_check = rs2_data;
+    assign imm_check = imm ;
+    assign instr_check = instr;
+    assign rs1_addr = instr[19:15];
+
     ctrl_unit ctr_unit_block
     (
         .instr        (instr),      
@@ -98,7 +104,7 @@ module singlecycle
 
     regfile regfile_block
     (     
-        .i_clk          (i_clk),
+        .i_clk          (clk_i),
         .i_rst_n        (i_rst),
         .i_rst1_addr    (instr[19:15]),
         .i_rst2_addr    (instr[24:20]),
