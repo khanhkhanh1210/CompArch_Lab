@@ -32,7 +32,7 @@ module alu
 
     assign shift_number = i_operand_b[4:0] ;
 
-    add_sub   add_sub(
+    add_sub  #(32) add_sub(
         .X      (i_operand_a),
         .Y      (i_operand_b),
         .Cin    (i_alu_op[3]),
