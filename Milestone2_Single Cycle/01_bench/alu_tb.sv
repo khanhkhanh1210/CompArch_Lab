@@ -1,6 +1,6 @@
 module alu_tb #(
     parameter WIDTH = 32
-)
+);
 
     logic   [3:0]           i_alu_op;
     logic   [WIDTH-1:0]     i_operand_a;
@@ -8,34 +8,30 @@ module alu_tb #(
   
     
     logic   [WIDTH-1:0]     o_alu_data;
-    logic                   o_bru_exp;
+    logic                   o_insn_vld;
 
     logic [WIDTH-1:0] expected;
 
-    type
+    
 
     alu #(WIDTH) dut(
         .i_alu_op(i_alu_op),
         .i_operand_a(i_operand_a),
         .i_operand_b(i_operand_b),
         .o_alu_data(o_alu_data),
-        .o_bru_exp(o_bru_exp)
+        .o_insn_vld(o_insn_vld)
     );
 
-    typedef enum logic [3:0] { 
-        A_ADD  = 4'b0000 ,
-        A_SUB  = 4'b0001 ,
-        A_SLT  = 4'b0010 ,
-        A_SLTU = 4'b0011 ,
-        A_XOR  = 4'b0100 ,
-        A_OR   = 4'b0101 ,
-        A_AND  = 4'b0110 ,
-        A_SLL  = 4'b0111 ,
-        A_SRL  = 4'b1000 ,
-        A_SRA  = 4'b1001
-    } OPCODE;
-
-    OPCODE i_alu_op[3:0];
+    localparam A_ADD  = 4'b0000;
+    localparam A_SUB  = 4'b1000;
+    localparam A_XOR  = 4'b0100;
+    localparam A_OR   = 4'b0110;
+    localparam A_AND  = 4'b0111;
+    localparam A_SLL  = 4'b0001;
+    localparam A_SRL  = 4'b0101;
+    localparam A_SRA  = 4'b1101;
+    localparam A_SLT  = 4'b0010;
+    localparam A_SLTU = 4'b0011;
 
     always_comb begin
         case(i_alu_op)
@@ -44,7 +40,7 @@ module alu_tb #(
                 A_SLT: expected = ($signed(i_operand_a) < $signed(i_operand_b)) ? 1 : 0;
                 A_SLTU: expected = (i_operand_a < i_operand_b) ? 1 : 0;
                 A_XOR: expected = i_operand_a ^ i_operand_b;
-                A_OR: expected = i_operand_a | i_operand_b
+                A_OR: expected = i_operand_a | i_operand_b;
                 A_AND: expected = i_operand_a & i_operand_b;
                 A_SLL: expected = i_operand_a << i_operand_b;
                 A_SRL: expected = i_operand_a >> i_operand_b;
@@ -54,14 +50,18 @@ module alu_tb #(
         endcase
     end
 
-    initial begin
-        for(int i = 0; i < 2**(32 * 2 + 4); i++) begin
-            {i_alu_op, i_operand_a, i_operand_b} = $urandom;
+    initial begin 
+            i_operand_a = 32'b11111111 11111111 11111111 11111100;
+            
+            i_alu_op =  ;
+            
             #5;
             if(o_alu_data !== expected) begin
                 $display("Error: i_alu_op = %d, i_operand_a = %d, i_operand_b = %d, o_alu_data = %d, expected = %d",
                         i_alu_op, i_operand_a, i_operand_b, o_alu_data, expected);
             end
+            else
+            $display ("pass all test");
         end
     end
 
