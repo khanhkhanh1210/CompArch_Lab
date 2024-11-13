@@ -161,7 +161,4 @@ end
       default: new_data_in = 32'b0;
     endcase
   end
-
-
-
 endmodule
