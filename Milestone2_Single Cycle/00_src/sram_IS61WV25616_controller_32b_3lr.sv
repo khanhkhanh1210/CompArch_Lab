@@ -27,7 +27,7 @@ module sram_IS61WV25616_controller_32b_3lr (
   input  logic          i_WREN   ,
   input  logic          i_RDEN   ,
   output logic [31:0]   o_RDATA  ,
-  output logic          o_ACK    ,
+  output logic          o_ACK    ,          
 
   output logic [17:0]   SRAM_ADDR,
   inout  logic [15:0]   SRAM_DQ  ,
@@ -35,7 +35,7 @@ module sram_IS61WV25616_controller_32b_3lr (
   output logic          SRAM_WE_N,
   output logic          SRAM_LB_N,
   output logic          SRAM_UB_N,
-  input  logic          SRAM_OE_N,
+  output logic          SRAM_OE_N,
 
   input logic i_clk,
   input logic i_reset
