@@ -76,13 +76,25 @@ module lsu (  // A memory for loading(read) or storing(write) data words
 
   assign internal_addr = i_lsu_addr[15:0];
 
-  assign new_data_o = ((internal_addr >= 16'h2000) && (internal_addr <= 16'h3FFF) && (!i_lsu_wren)) ? data_memory :
-                  ((internal_addr >= 16'h7000) && (internal_addr <= 16'h703F) && (!i_lsu_wren)) ? o_per_data :
-                  ((internal_addr >= 16'h7800) && (internal_addr <= 16'h781F) && (!i_lsu_wren)) ? i_per_data: 
-                    32'd0;
+  logic data_mem_en, o_per_en, i_per_en;
+  always_comb begin
+    data_mem_en = (internal_addr >= 16'h2000 && internal_addr <= 16'h3FFF);
+    o_per_en = (internal_addr >= 16'h7000 && internal_addr <= 16'h703F);
+    i_per_en = (internal_addr >= 16'h7800 && internal_addr <= 16'h781F);
 
-  assign dmem_wren = (internal_addr >= 16'h2000 && internal_addr <= 16'h3FFF && i_lsu_wren);
-  assign o_buffer_wren = (internal_addr >= 16'h7000 && internal_addr <= 16'h703F && i_lsu_wren);
+    if(i_lsu_wren) new_data_o = 32'd0;
+    else begin
+      case({data_mem_en, o_per_en, i_per_en})
+        3'b001: new_data_o = data_memory;
+        3'b010: new_data_o = o_per_data;
+        3'b100: new_data_o = i_per_data;
+        default: new_data_o = 32'd0;
+      endcase
+    end
+  end
+
+  assign dmem_wren = (data_mem_en && i_lsu_wren);
+  assign o_buffer_wren = (o_per_en && i_lsu_wren);
   reg [1:0] [15:0] mem ;  
   logic [15:0] mem_addr;    
   
@@ -132,7 +144,7 @@ end
 
 
   always_comb begin
-    casez (i_lsu_op)
+    case (i_lsu_op)
       3'b000:  o_ld_data = {{24{new_data_o[7]}}, new_data_o[7:0]};  // LB
       3'b001:  o_ld_data = {{16{new_data_o[15]}}, new_data_o[15:0]};  // LH
       3'b010:  o_ld_data = new_data_o;  // LW
@@ -143,7 +155,7 @@ end
   end
 
   always_comb begin
-    casez (i_lsu_op)
+    case (i_lsu_op)
       3'b000:  new_data_in = {new_data_o[31:8], i_st_data[7:0]};  // sb
       3'b001:  new_data_in = {new_data_o[31:16], i_st_data[15:0]};  // sh
       3'b010:  new_data_in = i_st_data;  // sw
