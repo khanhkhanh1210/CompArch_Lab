@@ -36,10 +36,10 @@ always_ff @(posedge i_clk or negedge i_rst_n) begin
     o_io_lcd  <= 32'b0;
   end else if (i_wr_en) begin
     case (i_addr)
-      16'h7000:  // Red LEDs
-        o_io_ledr <= i_wr_data;
-      16'h7010:  // Green LEDs
-        o_io_ledg <= i_wr_data;
+        16'h7000:  // Red LEDs
+          o_io_ledr <= i_wr_data;
+        16'h7010:  // Green LEDs
+          o_io_ledg <= i_wr_data;
      // 7-segment LEDs (HEX0 to HEX3)
         16'h7023: o_io_hex3 <= i_wr_data[6:0];
         16'h7022: o_io_hex2 <= i_wr_data[6:0];

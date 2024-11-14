@@ -14,26 +14,27 @@ module singlecycle
 // )
 
 (   //input
-    input   logic           i_clk,
-    input   logic           i_rst,
-    input   logic   [31:0]  io_sw_i,    
-    input   logic   [3:0]   io_btn_i,
+    input   logic           CLOCK_50,
+    input   logic           SW[17],
+    input   logic   [16:0]  SW,    
+    input   logic   [3:0]   KEY,
 
     //output 
     output  logic   [31:0]  o_pc_debug,
-    output  logic   [31:0]  o_io_ledg,
-    output  logic   [31:0]  o_io_ledr,
-    output  logic   [6:0]   o_io_hex0,
-    output  logic   [6:0]   o_io_hex1,
-    output  logic   [6:0]   o_io_hex2,
-    output  logic   [6:0]   o_io_hex3,
-    output  logic   [6:0]   o_io_hex4,
-    output  logic   [6:0]   o_io_hex5,
-    output  logic   [6:0]   o_io_hex6,
-    output  logic   [6:0]   o_io_hex7,  
+    output  logic   [16:0]  LEDR,
+    output  logic   [7:0]   LEDG,
+    output  logic   [6:0]   HEX0,
+    output  logic   [6:0]   HEX1,
+    output  logic   [6:0]   HEX2,
+    output  logic   [6:0]   HEX3,
+    output  logic   [6:0]   HEX4,
+    output  logic   [6:0]   HEX5,
+    output  logic   [6:0]   HEX6,
+    output  logic   [6:0]   HEX7, 
 	output  logic           o_insn_vld,
-    output  logic   [31:0]  o_io_lcd
+    output  logic   [7:0]   LCD_DATA
 );
+    logic   [31:0]  io_sw_i;
     logic   [31:0]  instr;                      // Instruction
     logic           br_less;                    // Branch less signal
     logic           br_equal;                   // Branch equal signal
@@ -41,7 +42,7 @@ module singlecycle
     logic           br_un;
     logic           rd_wren;   
     logic           opa_sel, opb_sel;
-    logic   [31:0]  imm;
+    
 
     logic   [3:0]   alu_op;
     logic           mem_wren;   
@@ -57,6 +58,8 @@ module singlecycle
     logic   [31:0]  wb_data;
     logic insn_vld_alu;
     logic insn_vld_ctrl;
+    
+    assign io_sw_i[16:0] = SW;
    
     ctrl_unit ctr_unit_block
     (
@@ -78,8 +81,8 @@ module singlecycle
     PC PC_block
     (
     
-        .i_clk         (i_clk),
-        .i_rst         (i_rst),
+        .i_clk         (CLOCK_50),
+        .i_rst         (SW[17]),
         .sel           (pc_sel),
         .i_pc          (alu_data),
         .pc_o          (pc),
@@ -89,8 +92,8 @@ module singlecycle
 
     imem imem
     (
-        .clk           (i_clk),
-        .rst_n         (i_rst),
+        .clk           (CLOCK_50),
+        .rst_n         (SW[17]),
         .i_imem_addr   (pc),
         .o_imem_data   (instr),
         .i_stop        (1'b0)	 
@@ -99,8 +102,8 @@ module singlecycle
 
     regfile regfile_block
     (     
-        .i_clk          (i_clk),
-        .i_rst_n        (i_rst),
+        .i_clk          (CLOCK_50),
+        .i_rst_n        (SW[17]),
         .i_rst1_addr    (instr[19:15]),
         .i_rst2_addr    (instr[24:20]),
         .i_rd_addr      (instr[11:7]),
@@ -149,27 +152,27 @@ module singlecycle
 
     lsu lsu_block
     (
-        .i_clk          (i_clk),        
-        .i_rst          (i_rst),
+        .i_clk          (CLOCK_50),        
+        .i_rst          (SW[17]),
         .i_lsu_addr     (alu_data),
         .i_st_data      (rs2_data),    
         .i_lsu_wren     (mem_wren),    
         .io_sw_i        (io_sw_i),    
-        .io_btn_i       (io_btn_i),
+        .io_btn_i       (KEY),
         .instr          (instr[6:0]),
         .i_lsu_op       (instr[14:12]),
         .o_ld_data      (ld_data),  
         .io_lcd_o       (o_io_lcd),
-        .io_ledr_o      (o_io_ledr),
-        .io_ledg_o      (o_io_ledg),  
-        .io_hex0_o      (o_io_hex0),
-        .io_hex1_o      (o_io_hex1),
-        .io_hex2_o      (o_io_hex2),
-        .io_hex3_o      (o_io_hex3),
-        .io_hex4_o      (o_io_hex4),
-        .io_hex5_o      (o_io_hex5),
-        .io_hex6_o      (o_io_hex6),
-        .io_hex7_o      (o_io_hex7) 
+        .io_ledr_o      (LEDR),
+        .io_ledg_o      (LEDG),  
+        .io_hex0_o      (HEX0),
+        .io_hex1_o      (HEX1),
+        .io_hex2_o      (HEX2),
+        .io_hex3_o      (HEX3),
+        .io_hex4_o      (HEX4),
+        .io_hex5_o      (HEX5),
+        .io_hex6_o      (HEX6),
+        .io_hex7_o      (HEX7) 
     );
 
     immgen immgen_block

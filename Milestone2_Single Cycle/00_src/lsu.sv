@@ -95,19 +95,15 @@ module lsu (  // A memory for loading(read) or storing(write) data words
 
   assign dmem_wren = (data_mem_en && i_lsu_wren);
   assign o_buffer_wren = (o_per_en && i_lsu_wren);
-  reg [1:0] [15:0] mem ;  
+  logic [31:0] mem_data;  
   logic [15:0] mem_addr;    
   
   // Calculate internal byte address by subtracting 0x2000 from addr_i
   assign mem_addr = i_lsu_addr[15:0] - 16'h2000;
   
   // Write operation
-  always @(posedge i_clk) begin
-    if (dmem_wren) begin
-      mem[mem_addr][0] <= i_st_data[15:0];
-      mem[mem_addr][1] <= i_st_data[31:16];
-
-    end
+  always_comb begin
+    mem_data = i_st_data;
   end
 
   always_comb begin 
@@ -122,7 +118,7 @@ module lsu (  // A memory for loading(read) or storing(write) data words
 end
 
   sram_IS61WV25616_controller_32b_3lr  sram(
-    .i_ADDR(i_lsu_addr[17:0]),
+    .i_ADDR(mem_addr),
     .i_WDATA(mem),
     .i_BMASK(byte_en),
     .i_WREN(dmem_wren),
@@ -162,8 +158,5 @@ end
       default: new_data_in = 32'b0;
     endcase
   end
-
-
-
 endmodule
 
