@@ -1,25 +1,19 @@
-module alu_tb #(
+module testbench #(
     parameter WIDTH = 32
 );
 
     logic   [3:0]           i_alu_op;
     logic   [WIDTH-1:0]     i_operand_a;
     logic   [WIDTH-1:0]     i_operand_b;
-  
-    
     logic   [WIDTH-1:0]     o_alu_data;
     logic                   o_insn_vld;
+    logic   [WIDTH-1:0]     expected;
 
-    logic [WIDTH-1:0] expected;
-
-    
-
-    alu #(WIDTH) dut(
+    alu #(WIDTH) dut (
         .i_alu_op(i_alu_op),
         .i_operand_a(i_operand_a),
         .i_operand_b(i_operand_b),
-        .o_alu_data(o_alu_data),
-        .o_insn_vld(o_insn_vld)
+        .o_alu_data(o_alu_data)
     );
 
     localparam A_ADD  = 4'b0000;
@@ -32,37 +26,39 @@ module alu_tb #(
     localparam A_SRA  = 4'b1101;
     localparam A_SLT  = 4'b0010;
     localparam A_SLTU = 4'b0011;
-
+    localparam A_IMM  = 4'b1111;
+    
     always_comb begin
-        case(i_alu_op)
-                A_ADD: expected = i_operand_a + i_operand_b;
-                A_SUB: expected = i_operand_a - i_operand_b;
-                A_SLT: expected = ($signed(i_operand_a) < $signed(i_operand_b)) ? 1 : 0;
-                A_SLTU: expected = (i_operand_a < i_operand_b) ? 1 : 0;
-                A_XOR: expected = i_operand_a ^ i_operand_b;
-                A_OR: expected = i_operand_a | i_operand_b;
-                A_AND: expected = i_operand_a & i_operand_b;
-                A_SLL: expected = i_operand_a << i_operand_b;
-                A_SRL: expected = i_operand_a >> i_operand_b;
-                //arithmetic shift right
-                A_SRA: expected = $signed(i_operand_a) >>> i_operand_b;
-                default: expected = 0;
+        case (i_alu_op)
+            A_ADD: expected = i_operand_a + i_operand_b;
+            A_SUB: expected = i_operand_a - i_operand_b;
+            A_SLT: expected = ($signed(i_operand_a) < $signed(i_operand_b)) ? 1 : 0;
+            A_SLTU: expected = (i_operand_a < i_operand_b) ? 1 : 0;
+            A_XOR: expected = i_operand_a ^ i_operand_b;
+            A_OR: expected = i_operand_a | i_operand_b;
+            A_AND: expected = i_operand_a & i_operand_b;
+            A_SLL: expected = i_operand_a << i_operand_b[4:0];
+            A_SRL: expected = i_operand_a >> i_operand_b[4:0];
+            A_SRA: expected = $signed(i_operand_a) >>> i_operand_b[4:0];
+            A_IMM: expected = i_operand_b;
+            default: expected = 0;
         endcase
     end
 
-    initial begin 
-            i_operand_a = 32'b11111111 11111111 11111111 11111100;
-            
-            i_alu_op =  ;
-            
-            #5;
-            if(o_alu_data !== expected) begin
-                $display("Error: i_alu_op = %d, i_operand_a = %d, i_operand_b = %d, o_alu_data = %d, expected = %d",
-                        i_alu_op, i_operand_a, i_operand_b, o_alu_data, expected);
+    initial begin
+        for(int i = 0; i < 16; i = i + 1) begin    
+            i_operand_a = $urandom;
+            i_operand_b = $urandom;
+            for (int i = 0; i < 16; i++) begin
+                i_alu_op = i;
+                #10;
+                if (o_alu_data !== expected) begin
+                    $display("Error: i_alu_op = %b, i_operand_a = %d, i_operand_b = %d, o_alu_data = %d, expected = %d",
+                            i_alu_op, i_operand_a, i_operand_b, o_alu_data, expected);
+                end
             end
-            else
-            $display ("pass all test");
         end
+        $display("All tests completed.");
     end
-
 endmodule
+
