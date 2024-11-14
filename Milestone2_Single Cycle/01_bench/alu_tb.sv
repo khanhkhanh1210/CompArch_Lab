@@ -34,31 +34,32 @@ module alu_tb #(
     localparam A_SLTU = 4'b0011;
 
     always_comb begin
-        case(i_alu_op)
-                A_ADD: expected = i_operand_a + i_operand_b;
-                A_SUB: expected = i_operand_a - i_operand_b;
-                A_SLT: expected = ($signed(i_operand_a) < $signed(i_operand_b)) ? 1 : 0;
-                A_SLTU: expected = (i_operand_a < i_operand_b) ? 1 : 0;
-                A_XOR: expected = i_operand_a ^ i_operand_b;
-                A_OR: expected = i_operand_a | i_operand_b;
-                A_AND: expected = i_operand_a & i_operand_b;
-                A_SLL: expected = i_operand_a << i_operand_b;
-                A_SRL: expected = i_operand_a >> i_operand_b;
-                //arithmetic shift right
-                A_SRA: expected = $signed(i_operand_a) >>> i_operand_b;
-                default: expected = 0;
+        case (i_alu_op)
+            A_ADD: expected = i_operand_a + i_operand_b;
+            A_SUB: expected = i_operand_a - i_operand_b;
+            A_SLT: expected = ($signed(i_operand_a) < $signed(i_operand_b[4:0])) ? 1 : 0;
+            A_SLTU: expected = (i_operand_a < i_operand_b) ? 1 : 0;
+            A_XOR: expected = i_operand_a ^ i_operand_b;
+            A_OR: expected = i_operand_a | i_operand_b;
+            A_AND: expected = i_operand_a & i_operand_b;
+            A_SLL: expected = i_operand_a << i_operand_b;
+            A_SRL: expected = i_operand_a >> i_operand_b;
+            A_SRA: expected = $signed(i_operand_a) >>> i_operand_b;
+            default: expected = 0;
         endcase
     end
 
-    initial begin 
-            i_operand_a = 32'b11111111 11111111 11111111 11111100;
-            
-            i_alu_op =  ;
-            
-            #5;
-            if(o_alu_data !== expected) begin
-                $display("Error: i_alu_op = %d, i_operand_a = %d, i_operand_b = %d, o_alu_data = %d, expected = %d",
-                        i_alu_op, i_operand_a, i_operand_b, o_alu_data, expected);
+    initial begin
+        for(int i = 0; i < 16; i = i + 1) begin    
+            i_operand_a = $urandom;
+            i_operand_b = $urandom;
+            for (int i = 0; i < 16; i++) begin
+                i_alu_op = i;
+                #10;
+                if (o_alu_data !== expected) begin
+                    $display("Error: i_alu_op = %b, i_operand_a = %d, i_operand_b = %d, o_alu_data = %d, expected = %d",
+                            i_alu_op, i_operand_a, i_operand_b, o_alu_data, expected);
+                end
             end
             else
             $display ("pass all test");
