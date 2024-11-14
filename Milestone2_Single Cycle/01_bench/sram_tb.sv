@@ -1,4 +1,4 @@
-module sram_tb()
+module sram_tb();
     logic [17:0]   i_ADDR   ;
     logic [31:0]   i_WDATA  ;
     logic [ 3:0]   i_BMASK  ;
@@ -6,6 +6,7 @@ module sram_tb()
     logic          i_RDEN   ;
     logic [31:0]   o_RDATA  ;
     logic          o_ACK    ;
+    logic          clk      ;
 
     logic [17:0]   SRAM_ADDR;
     logic [15:0]   SRAM_DQ  ;
@@ -38,5 +39,7 @@ module sram_tb()
     );
 
     always clk = #5 ~clk;
+
+endmodule
 
     
