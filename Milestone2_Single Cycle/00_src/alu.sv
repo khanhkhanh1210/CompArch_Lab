@@ -64,11 +64,11 @@ module alu
                 o_alu_data = add_sub_result;
                 o_insn_vld = 1;
             end
-            A_SLT: begin
+            A_SLT: begin            // signed comparison
                 o_alu_data = {31'b0,blarger};     
                 o_insn_vld = 1;
             end         
-            A_SLTU: begin
+            A_SLTU: begin           // unsigned comparison
                 o_alu_data = {31'b0,blarger};
                 o_insn_vld = 1;
             end
