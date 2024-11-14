@@ -41,12 +41,12 @@ module singlecycle
     logic           br_un;
     logic           rd_wren;   
     logic           opa_sel, opb_sel;
-    logic   [31:0]  imm;
 
     logic   [3:0]   alu_op;
     logic           mem_wren;   
     logic   [1:0]   wb_sel;     
     logic   [31:0]  pc, pc_4;
+    logic   [31:0]  imm;
     logic   [31:0]  rs1_data;
     logic   [31:0]  rs2_data;
     logic   [31:0]  operand_a;
@@ -170,12 +170,6 @@ module singlecycle
         .io_hex5_o      (o_io_hex5),
         .io_hex6_o      (o_io_hex6),
         .io_hex7_o      (o_io_hex7) 
-    );
-
-    immgen immgen_block
-    (
-        .i_instr        (instr),
-        .o_imm          (imm)
     );
    always_comb begin
         case(wb_sel)
