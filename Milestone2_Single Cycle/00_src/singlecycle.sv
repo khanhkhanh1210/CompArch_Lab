@@ -56,8 +56,8 @@ module singlecycle
     logic   [31:0]  pc_four;
     logic   [31:0]  ld_data;
     logic   [31:0]  wb_data;
-    logic insn_vld_alu;
-    logic insn_vld_ctrl;
+    logic           insn_vld_alu;
+    logic           insn_vld_ctrl;
     
     assign io_sw_i[16:0] = SW;
    
