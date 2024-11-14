@@ -49,7 +49,7 @@ module alu
 
     barrel_shifter  barrel_shifter(
         .data       (i_operand_a),
-        .sel        (i_alu_op[1:0]),
+        .sel        (i_alu_op[3:2]),
         .amount     (shift_number),
         .result     (barrel_shifter_result)
     );
