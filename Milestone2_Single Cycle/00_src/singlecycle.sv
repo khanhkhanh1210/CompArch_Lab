@@ -32,8 +32,7 @@ module singlecycle
     output  logic   [6:0]   o_io_hex6,
     output  logic   [6:0]   o_io_hex7,  
 	output  logic           o_insn_vld,
-    output  logic   [31:0]  o_io_lcd,
-    output  logic           insn_vld
+    output  logic   [31:0]  o_io_lcd
 );
     logic   [31:0]  instr;                      // Instruction
     logic           br_less;                    // Branch less signal
@@ -42,12 +41,12 @@ module singlecycle
     logic           br_un;
     logic           rd_wren;   
     logic           opa_sel, opb_sel;
+    logic   [31:0]  imm;
 
     logic   [3:0]   alu_op;
     logic           mem_wren;   
     logic   [1:0]   wb_sel;     
     logic   [31:0]  pc, pc_4;
-    logic   [31:0]  imm;
     logic   [31:0]  rs1_data;
     logic   [31:0]  rs2_data;
     logic   [31:0]  operand_a;
@@ -56,6 +55,8 @@ module singlecycle
     logic   [31:0]  pc_four;
     logic   [31:0]  ld_data;
     logic   [31:0]  wb_data;
+    logic insn_vld_alu;
+    logic insn_vld_ctrl;
    
     ctrl_unit ctr_unit_block
     (
@@ -70,7 +71,7 @@ module singlecycle
         .alu_op       (alu_op),
         .mem_wren     (mem_wren),   
         .wb_sel       (wb_sel), 
-        .insn_vld     (insn_vld)     
+        .insn_vld     (insn_vld_ctrl)     
     );
 
 
@@ -142,9 +143,9 @@ module singlecycle
         .i_operand_b    (operand_b),
 
         .o_alu_data     (alu_data),
-        .o_insn_vld     (insn_vld)
+        .o_insn_vld     (insn_vld_alu)
     );
-    /* verilator lint_on PINCONNECTEMPTY */
+    assign o_insn_vld = insn_vld_alu | insn_vld_ctrl;
 
     lsu lsu_block
     (
@@ -168,7 +169,13 @@ module singlecycle
         .io_hex4_o      (o_io_hex4),
         .io_hex5_o      (o_io_hex5),
         .io_hex6_o      (o_io_hex6),
-        .io_hex7_o      (o_io_hex7)  
+        .io_hex7_o      (o_io_hex7) 
+    );
+
+    immgen immgen_block
+    (
+        .i_instr        (instr),
+        .o_imm          (imm)
     );
    always_comb begin
         case(wb_sel)

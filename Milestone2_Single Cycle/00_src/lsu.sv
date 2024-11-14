@@ -1,29 +1,28 @@
 module lsu (  // A memory for loading(read) or storing(write) data words
-    input   logic   [31:0]  i_lsu_addr,
-    input   logic   [31:0]  i_st_data,
-    input   logic           i_lsu_wren,
-    input   logic           i_clk,
-    input   logic           i_rst_n,
-    input   logic   [6:0]   instr,
-    input   logic   [31:0]  io_sw_i,
-    input   logic   [3:0]   io_btn_i,
-    input   logic   [2:0]   i_lsu_op,           // 0: LB, 1: LH, 2: LW, 4: LBU, 5: LHU
-    output  logic   [31:0]  o_ld_data,
-    output  logic   [31:0]  io_lcd_o,
-    output  logic   [31:0]  io_ledr_o,
-    output  logic   [31:0]  io_ledg_o,
-    output  logic   [6:0]   io_hex0_o,
-    output  logic   [6:0]   io_hex1_o,
-    output  logic   [6:0]   io_hex2_o,
-    output  logic   [6:0]   io_hex3_o,
-    output  logic   [6:0]   io_hex4_o,
-    output  logic   [6:0]   io_hex5_o,
-    output  logic   [6:0]   io_hex6_o,
-    output  logic   [6:0]   io_hex7_o,
-    output  logic   [17:0]  SRAM_ADDR,
-    inout   logic   [15:0]  SRAM_DQ,
-    output  logic           SRAM_CE_N, SRAM_WE_N, SRAM_LB_N, SRAM_UB_N, SRAM_OE_N,
-    output  logic           i_stall
+    input logic [31:0] i_lsu_addr, i_st_data,
+    input logic i_lsu_wren,
+    input logic i_clk,
+    input logic i_rst_n,
+    input logic [6:0] instr,
+    input logic [31:0] io_sw_i,
+    input logic [3:0] io_btn_i,
+    input logic [2:0] i_lsu_op,
+    output logic [31:0] o_ld_data,
+    output logic [31:0] io_lcd_o,
+    output logic [31:0] io_ledr_o,
+    output logic [31:0] io_ledg_o,
+    output logic [6:0] io_hex0_o,
+    output logic [6:0] io_hex1_o,
+    output logic [6:0] io_hex2_o,
+    output logic [6:0] io_hex3_o,
+    output logic [6:0] io_hex4_o,
+    output logic [6:0] io_hex5_o,
+    output logic [6:0] io_hex6_o,
+    output logic [6:0] io_hex7_o,
+    output [17:0] SRAM_ADDR,
+    inout [15:0] SRAM_DQ,
+    output SRAM_CE_N, SRAM_WE_N, SRAM_LB_N, SRAM_UB_N, SRAM_OE_N,
+    output i_stall
 );
 
   logic [15:0] internal_addr;
@@ -43,6 +42,7 @@ module lsu (  // A memory for loading(read) or storing(write) data words
   logic [31:0] new_data_o;
   logic i_ACK;
 
+  
   //input buffer instantiation
 
   input_buffer IN_BUFF (
@@ -76,14 +76,26 @@ module lsu (  // A memory for loading(read) or storing(write) data words
 
   assign internal_addr = i_lsu_addr[15:0];
 
-  assign new_data_o = ((internal_addr >= 16'h2000) && (internal_addr <= 16'h23FF) && (!i_lsu_wren)) ? data_memory :
-                  ((internal_addr >= 16'h7000) && (internal_addr <= 16'h703F) && (!i_lsu_wren)) ? o_per_data :
-                  ((internal_addr >= 16'h7800) && (internal_addr <= 16'h781F) && (!i_lsu_wren)) ? i_per_data: 
-                    32'd0;
+  logic data_mem_en, o_per_en, i_per_en;
+  always_comb begin
+    data_mem_en = (internal_addr >= 16'h2000 && internal_addr <= 16'h3FFF);
+    o_per_en = (internal_addr >= 16'h7000 && internal_addr <= 16'h703F);
+    i_per_en = (internal_addr >= 16'h7800 && internal_addr <= 16'h781F);
 
-  assign dmem_wren = (internal_addr >= 16'h2000 && internal_addr <= 16'h23FF && i_lsu_wren);
-  assign o_buffer_wren = (internal_addr >= 16'h7000 && internal_addr <= 16'h703F && i_lsu_wren);
-  reg [1:0] [15:0] mem ;  // 2KiB
+    if(i_lsu_wren) new_data_o = 32'd0;
+    else begin
+      case({data_mem_en, o_per_en, i_per_en})
+        3'b001: new_data_o = data_memory;
+        3'b010: new_data_o = o_per_data;
+        3'b100: new_data_o = i_per_data;
+        default: new_data_o = 32'd0;
+      endcase
+    end
+  end
+
+  assign dmem_wren = (data_mem_en && i_lsu_wren);
+  assign o_buffer_wren = (o_per_en && i_lsu_wren);
+  reg [1:0] [15:0] mem ;  
   logic [15:0] mem_addr;    
   
   // Calculate internal byte address by subtracting 0x2000 from addr_i
@@ -94,6 +106,7 @@ module lsu (  // A memory for loading(read) or storing(write) data words
     if (dmem_wren) begin
       mem[mem_addr][0] <= i_st_data[15:0];
       mem[mem_addr][1] <= i_st_data[31:16];
+
     end
   end
 
@@ -111,7 +124,7 @@ end
   sram_IS61WV25616_controller_32b_3lr  sram(
     .i_ADDR(i_lsu_addr[17:0]),
     .i_WDATA(mem),
-    .i_BMASK(4'b1111),
+    .i_BMASK(byte_en),
     .i_WREN(dmem_wren),
     .i_RDEN(!i_lsu_wren),
     .o_RDATA(data_memory),
@@ -124,10 +137,10 @@ end
     .SRAM_UB_N(SRAM_UB_N),
     .SRAM_OE_N(SRAM_OE_N),
     .i_clk(i_clk),
-    .i_reset(!i_rst_n)
+    .i_reset(i_rst_n)
   );
   
-  assign i_stall = ((internal_addr >= 16'h2000 && internal_addr <= 16'h23FF)&&((instr==7'b0100011)||(instr==7'b0000011)))? ~i_ACK : 1'b0;
+  assign i_stall = ((internal_addr >= 16'h2000 && internal_addr <= 16'h3FFF)&&((instr==7'b0100011)||(instr==7'b0000011)))? ~i_ACK : 1'b0;
 
 
   always_comb begin
@@ -149,4 +162,8 @@ end
       default: new_data_in = 32'b0;
     endcase
   end
+
+
+
 endmodule
+

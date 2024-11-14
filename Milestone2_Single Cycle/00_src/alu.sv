@@ -42,7 +42,7 @@ module alu
     brc #(WIDTH) compare_32bit_s(
         .i_rst1_data(i_operand_a),
         .i_rst2_data(i_operand_b),
-        .i_brc_un(i_alu_op[0]),
+        .i_brc_un(!i_alu_op[0]),
         .o_brc_equal(),
         .o_brc_less(blarger)
     );

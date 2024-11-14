@@ -65,11 +65,24 @@ module ctrl_unit
             end
                                                      
             B_FORMAT: begin     
-                insn_vld = 1'b1;
+                
                 casex(instr[14:12])
-                    3'b00x: pc_sel = br_equal; // pc = pc + imm if equal
-                    3'b10x: pc_sel = br_less; //  pc = pc + imm if less
-                    3'b11x: pc_sel = br_less; //  pc = pc + imm if greater
+                    3'b00x: begin
+                        pc_sel = br_equal; // pc = pc + imm if equal
+                        insn_vld = 1'b1;
+                    end
+                    3'b10x: begin
+                        pc_sel = br_less; //  pc = pc + imm if less
+                        insn_vld = 1'b1;
+                    end
+                    3'b11x: begin
+                        pc_sel = br_less; //  pc = pc + imm if greater
+                        insn_vld = 1'b1;
+                    end
+                default: begin
+                    pc_sel = 1'b0; // pc = pc + 4
+                    insn_vld = 1'b0;
+                end
                 endcase
                 br_un = instr[13];                        // branch signed or unsigned
                 rd_wren = 1'b0;                             // write disable
