@@ -1,5 +1,5 @@
 module testbench #(
-    parameter DATA_SIZE = 8
+    parameter DATA_SIZE = 32
 ) ();
     logic[DATA_SIZE-1:0] a, b;
     logic eq, lt;
@@ -12,8 +12,10 @@ module testbench #(
     brc #(DATA_SIZE) dut(a, b, un, eq, lt);
 
     initial begin
-        for (int i = 0; i < 2**17; i++) begin
-            {a, b, un} = $urandom;
+        for (int i = 0; i < 2**32; i++) begin
+            a = $urandom;
+            b = $urandom;
+            un = $urandom_range(0, 1);
             // compare sign numbers
             if (!un) begin
                 expected = {a == b, a < b};
