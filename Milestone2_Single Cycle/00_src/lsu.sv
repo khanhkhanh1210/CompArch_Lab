@@ -1,6 +1,5 @@
 module lsu (  // A memory for loading(read) or storing(write) data words
-    input logic [31:0] i_lsu_addr,
-    i_st_data,
+    input logic [31:0] i_lsu_addr, i_st_data,
     input logic i_lsu_wren,
     input logic i_clk,
     input logic i_rst_n,
@@ -43,15 +42,7 @@ module lsu (  // A memory for loading(read) or storing(write) data words
   logic [31:0] new_data_o;
   logic i_ACK;
 
-  //dmem instantiation
-  /*dmem DMEM (
-      .i_clk(i_clk),
-      .i_rst_n(i_rst_n),
-      .i_dmem_addr(internal_addr),
-      .i_st_data(new_data_in),
-      .i_dmem_wr(dmem_wren),
-      .o_ld_data(dmem_data)
-  );*/
+  
   //input buffer instantiation
 
   input_buffer IN_BUFF (
@@ -85,14 +76,14 @@ module lsu (  // A memory for loading(read) or storing(write) data words
 
   assign internal_addr = i_lsu_addr[15:0];
 
-  assign new_data_o = ((internal_addr >= 16'h2000) && (internal_addr <= 16'h23FF) && (!i_lsu_wren)) ? data_memory :
+  assign new_data_o = ((internal_addr >= 16'h2000) && (internal_addr <= 16'h3FFF) && (!i_lsu_wren)) ? data_memory :
                   ((internal_addr >= 16'h7000) && (internal_addr <= 16'h703F) && (!i_lsu_wren)) ? o_per_data :
                   ((internal_addr >= 16'h7800) && (internal_addr <= 16'h781F) && (!i_lsu_wren)) ? i_per_data: 
                     32'd0;
 
-  assign dmem_wren = (internal_addr >= 16'h2000 && internal_addr <= 16'h23FF && i_lsu_wren);
+  assign dmem_wren = (internal_addr >= 16'h2000 && internal_addr <= 16'h3FFF && i_lsu_wren);
   assign o_buffer_wren = (internal_addr >= 16'h7000 && internal_addr <= 16'h703F && i_lsu_wren);
-  reg [3:0] [7:0] mem ;  // 2KiB
+  reg [1:0] [15:0] mem ;  
   logic [15:0] mem_addr;    
   
   // Calculate internal byte address by subtracting 0x2000 from addr_i
@@ -101,10 +92,9 @@ module lsu (  // A memory for loading(read) or storing(write) data words
   // Write operation
   always @(posedge i_clk) begin
     if (dmem_wren) begin
-      mem[mem_addr][0] <= i_st_data[7:0];
-      mem[mem_addr][1] <= i_st_data[15:8];
-      mem[mem_addr][2] <= i_st_data[23:16];
-      mem[mem_addr][3] <= i_st_data[31:24];
+      mem[mem_addr][0] <= i_st_data[15:0];
+      mem[mem_addr][1] <= i_st_data[31:16];
+
     end
   end
 
@@ -135,10 +125,10 @@ end
     .SRAM_UB_N(SRAM_UB_N),
     .SRAM_OE_N(SRAM_OE_N),
     .i_clk(i_clk),
-    .i_reset(!i_rst_n)
+    .i_reset(i_rst_n)
   );
   
-  assign i_stall = ((internal_addr >= 16'h2000 && internal_addr <= 16'h23FF)&&((instr==7'b0100011)||(instr==7'b0000011)))? ~i_ACK : 1'b0;
+  assign i_stall = ((internal_addr >= 16'h2000 && internal_addr <= 16'h3FFF)&&((instr==7'b0100011)||(instr==7'b0000011)))? ~i_ACK : 1'b0;
 
 
   always_comb begin

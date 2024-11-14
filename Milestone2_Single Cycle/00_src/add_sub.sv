@@ -4,7 +4,7 @@ module add_sub #(parameter data_size = 4)
     input logic [data_size-1:0]  Y, 
     input logic                  Cin,           //
 
-    output logic [data_size-1:0] S,
+    output logic [data_size-1:0] S
     // output logic                 Co
 );
 
