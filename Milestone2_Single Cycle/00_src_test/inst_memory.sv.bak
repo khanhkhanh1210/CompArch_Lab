@@ -17,7 +17,7 @@ module inst_memory #(
   initial begin
     $readmemh("C:/Users/doand/OneDrive/Desktop/singlecycle/memory/instmem.data.sim",imem);
   end
-	
+
 
 
   always_comb begin : proc_data
