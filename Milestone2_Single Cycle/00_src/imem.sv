@@ -10,11 +10,9 @@ module imem (
     logic [31:0] mem [2047:0];
 
     // Khởi tạo bộ nhớ từ file `instruction.mem` khi reset
-    always_comb begin
-       if (!rst_n) begin
-            $readmemh("../../../03_test/dump/instruction.mem", mem);
-       end
-    end
+	 initial begin
+		$readmemh("C:/Users/doand/OneDrive/singlecycle_git/CompArch_Lab/Milestone2_Single Cycle/03_test/dump/instruction.mem", mem);
+	 end
 	 
     // Lấy lệnh từ bộ nhớ và gán cho o_imem_data
     always_ff @(posedge clk or negedge rst_n) begin : proc_data
