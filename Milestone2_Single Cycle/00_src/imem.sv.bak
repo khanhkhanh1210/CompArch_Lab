@@ -11,7 +11,7 @@ module imem (
 
     // Khởi tạo bộ nhớ từ file `instruction.mem` khi reset
 	 initial begin
-		$readmemh("C:/Users/Public/singlecycle/CompArch_Lab/Milestone2_Single Cycle/03_test/dump/instruction.mem", mem);
+		$readmemh("C:/Users/doand/OneDrive/singlecycle_git/CompArch_Lab/Milestone2_Single Cycle/03_test/dump/instruction.mem", mem);
 	 end
 	 
     // Lấy lệnh từ bộ nhớ và gán cho o_imem_data

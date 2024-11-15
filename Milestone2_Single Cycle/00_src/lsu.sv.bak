@@ -119,7 +119,7 @@ end
 
   sram_IS61WV25616_controller_32b_3lr  sram(
     .i_ADDR(mem_addr),
-    .i_WDATA(mem_data),
+    .i_WDATA(mem),
     .i_BMASK(byte_en),
     .i_WREN(dmem_wren),
     .i_RDEN(!i_lsu_wren),
