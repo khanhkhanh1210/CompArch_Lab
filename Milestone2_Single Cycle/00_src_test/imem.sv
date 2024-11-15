@@ -11,7 +11,7 @@ module imem (
 
     // Khởi tạo bộ nhớ từ file `instruction.mem` khi reset
 	 initial begin
-		$readmemh("C:/Users/doand/OneDrive/singlecycle_git/CompArch_Lab/Milestone2_Single Cycle/03_test/dump/instruction.mem", mem);
+		$readmemh("mem.dump", mem);
 	 end
 	 
     // Lấy lệnh từ bộ nhớ và gán cho o_imem_data
@@ -22,7 +22,7 @@ module imem (
         else begin
             if (!i_stop) begin
                 // Lấy 1 câu lệnh 32-bit từ địa chỉ `i_imem_addr`
-                o_imem_data <= mem[i_imem_addr[31:2]];
+                o_imem_data <= mem[i_imem_addr[31:0]];
             end
         end
     end

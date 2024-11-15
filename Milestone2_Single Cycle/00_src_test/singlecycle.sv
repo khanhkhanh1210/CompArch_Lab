@@ -14,36 +14,25 @@ module singlecycle
 // )
 
 (   //input
-    input   logic           CLOCK_50,
-    input   logic   [17:0]  SW,    
-    input   logic   [3:0]   KEY,
+    input  logic    [31:0]  i_io_sw,
+    output  logic   [31:0]  o_io_lcd,
+    output  logic   [31:0]  o_io_ledg,    
+    output  logic   [31:0]  o_io_ledr,
+    output  logic   [6:0]   o_io_hex0,
+    output  logic   [6:0]   o_io_hex1,
+    output  logic   [6:0]   o_io_hex2,
+    output  logic   [6:0]   o_io_hex3,
+    output  logic   [6:0]   o_io_hex4,
+    output  logic   [6:0]   o_io_hex5,
+    output  logic   [6:0]   o_io_hex6,
+    output  logic   [6:0]   o_io_hex7,
 
-    //output 
     output  logic   [31:0]  o_pc_debug,
-    output  logic   [17:0]  LEDR,
-    output  logic   [7:0]   LEDG,
-    output  logic   [6:0]   HEX0,
-    output  logic   [6:0]   HEX1,
-    output  logic   [6:0]   HEX2,
-    output  logic   [6:0]   HEX3,
-    output  logic   [6:0]   HEX4,
-    output  logic   [6:0]   HEX5,
-    output  logic   [6:0]   HEX6,
-    output  logic   [6:0]   HEX7, 
-    output  logic           LCD_ON,
-    output  logic           LCD_EN,
-    output  logic           LCD_RS,
-	 output	logic			    LCD_RW,
-    output  logic   [7:0]   LCD_DATA,
+    output  logic           o_insn_vld,
+    input   logic           i_clk,
+    input   logic           i_rst_n,
     
-    //SRAM
-    output logic    [17:0]   SRAM_ADDR,
-    inout  wire    [15:0]   SRAM_DQ  ,
-    output logic             SRAM_CE_N,
-    output logic             SRAM_WE_N,
-    output logic             SRAM_LB_N,
-    output logic             SRAM_UB_N,
-    output  logic            SRAM_OE_N
+    input  logic    [3:0]   i_io_btn
 );
     logic   [31:0]  io_sw_i;
     logic   [31:0]  instr;                      // Instruction
@@ -53,7 +42,6 @@ module singlecycle
     logic           br_un;
     logic           rd_wren;   
     logic           opa_sel, opb_sel;
-    logic           o_insn_vld;
     logic   [3:0]   alu_op;
     logic           mem_wren;   
     logic   [1:0]   wb_sel;     
@@ -69,8 +57,6 @@ module singlecycle
     logic           insn_vld_alu;
     logic           insn_vld_ctrl;
     logic   [31:0]  imm; 
-    
-    assign io_sw_i[16:0] = SW;
    
     ctrl_unit ctr_unit_block
     (
@@ -92,8 +78,8 @@ module singlecycle
     PC PC_block
     (
     
-        .i_clk         (CLOCK_50),
-        .i_rst         (SW[17]),
+        .i_clk         (i_clk),
+        .i_rst         (i_rst_n),
         .sel           (pc_sel),
         .i_pc          (alu_data),
         .pc_o          (pc),
@@ -103,8 +89,8 @@ module singlecycle
 
     imem imem
     (
-        .clk           (CLOCK_50),
-        .rst_n         (SW[17]),
+        .clk           (i_clk),
+        .rst_n         (i_rst_n),
         .i_imem_addr   (pc),
         .o_imem_data   (instr),
         .i_stop        (1'b0)	 
@@ -113,8 +99,8 @@ module singlecycle
 
     regfile regfile_block
     (     
-        .i_clk          (CLOCK_50),
-        .i_rst_n        (SW[17]),
+        .i_clk          (i_clk),
+        .i_rst_n        (i_rst_n),
         .i_rst1_addr    (instr[19:15]),
         .i_rst2_addr    (instr[24:20]),
         .i_rd_addr      (instr[11:7]),
@@ -125,7 +111,6 @@ module singlecycle
     );
 
     brc BRC_block(
-
         .i_rst1_data     (rs1_data),
         .i_rst2_data     (rs2_data),
         .i_brc_un        (br_un),      
@@ -160,37 +145,30 @@ module singlecycle
         .o_insn_vld     (insn_vld_alu)
     );
     assign o_insn_vld = insn_vld_alu | insn_vld_ctrl;
-    assign LEDR[17]=o_insn_vld;
+
     lsu lsu_block
     (
-        .i_clk          (CLOCK_50),        
-        .i_rst_n          (SW[17]),
+        .i_clk          (i_clk),        
+        .i_rst_n        (i_rst_n),
         .i_lsu_addr     (alu_data),
         .i_st_data      (rs2_data),    
         .i_lsu_wren     (mem_wren),    
-        .i_io_sw        (io_sw_i[16:0]),    
-        .i_io_btn       (KEY),
+        .i_io_sw        (i_io_sw),    
+        .i_io_btn       (i_io_btn),
         .instr          (instr[6:0]),
         .i_lsu_op       (instr[14:12]),
         .o_ld_data      (ld_data),  
-        .o_io_lcd       ({LCD_ON, 20'b0, LCD_EN, LCD_RS, LCD_RW, LCD_DATA}),
-        .o_io_ledr      (LEDR[16:0]),
-        .o_io_ledg      (LEDG),  
-        .o_io_hex0      (HEX0),
-        .o_io_hex1      (HEX1),
-        .o_io_hex2      (HEX2),
-        .o_io_hex3      (HEX3),
-        .o_io_hex4      (HEX4),
-        .o_io_hex5      (HEX5),
-        .o_io_hex6      (HEX6),
-        .o_io_hex7      (HEX7), 
-        .SRAM_ADDR      (SRAM_ADDR),
-        .SRAM_DQ        (SRAM_DQ),
-        .SRAM_CE_N      (SRAM_CE_N),
-        .SRAM_WE_N      (SRAM_WE_N),
-        .SRAM_LB_N      (SRAM_LB_N),
-        .SRAM_UB_N      (SRAM_UB_N),
-        .SRAM_OE_N      (SRAM_OE_N)
+        .o_io_lcd       (o_io_lcd),
+        .o_io_ledr      (o_io_ledr),
+        .o_io_ledg      (o_io_ledg),  
+        .o_io_hex0      (o_io_hex0),
+        .o_io_hex1      (o_io_hex1),
+        .o_io_hex2      (o_io_hex2),
+        .o_io_hex3      (o_io_hex3),
+        .o_io_hex4      (o_io_hex4),
+        .o_io_hex5      (o_io_hex5),
+        .o_io_hex6      (o_io_hex6),
+        .o_io_hex7      (o_io_hex7)
     );
 		
     immgen immgen_block
