@@ -90,7 +90,6 @@ module singlecycle
     imem imem
     (
         .clk           (i_clk),
-        .rst_n         (i_rst_n),
         .i_imem_addr   (pc),
         .o_imem_data   (instr),
         .i_stop        (1'b0)	 
