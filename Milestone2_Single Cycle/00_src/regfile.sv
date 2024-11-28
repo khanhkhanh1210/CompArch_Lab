@@ -11,6 +11,7 @@ module regfile(
 
     output logic [31:0]  o_rst1_data,        // Data from the first source register
     output logic [31:0]  o_rst2_data         // Data from the second source register
+   
 );
     logic [31:0] r_regfile[31:0];
     

@@ -20,7 +20,7 @@ module singlecycle
     input   logic           i_clk,
     input   logic           i_rst_n,
     
-    input  logic    [31:0]   i_io_btn
+    input  logic    [3:0]   i_io_btn
 );
     logic   [31:0]  io_sw_i;
     logic   [31:0]  instr;                      // Instruction

@@ -12,7 +12,7 @@ module alu
     output  logic                   o_insn_vld
 );
 
-    localparam A_ADD  = 4'b0000;
+    localparam A_ADD  = 4'b0000;        
     localparam A_SUB  = 4'b1000;
     localparam A_XOR  = 4'b0100;
     localparam A_OR   = 4'b0110;
@@ -22,6 +22,7 @@ module alu
     localparam A_SRA  = 4'b1101;
     localparam A_SLT  = 4'b0010;
     localparam A_SLTU = 4'b0011;
+    localparam A_LUI  = 4'b1001;
         
     logic [4:0]         shift_number;
     logic               blarger;
@@ -94,6 +95,10 @@ module alu
             end
             A_SRA: begin
                 o_alu_data = barrel_shifter_result;
+                o_insn_vld = 1;
+            end
+            A_LUI: begin
+                o_alu_data = i_operand_b;
                 o_insn_vld = 1;
             end
             default: begin

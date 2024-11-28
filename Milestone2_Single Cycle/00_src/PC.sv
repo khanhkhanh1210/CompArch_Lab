@@ -9,11 +9,11 @@ module PC(
     output logic [31:0] pc_4      // Program counter + 4
 );
     logic [31:0] pc_next;   
+	
 	assign pc_4 = pc_o + 4;
-    // ksa_adder #(32) adder (pc_o, 32'h4, 1'b0, pc_4);
 
     always_comb begin
-        if(sel) begin
+        if(sel == 0) begin
             pc_next = pc_4;
         end else begin
             pc_next = i_pc;

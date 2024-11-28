@@ -109,24 +109,14 @@ module lsu (  // A memory for loading(read) or storing(write) data words
   //       default: byte_en = 4'b1111;
   //   endcase
   // end
-/*
-  ram dmem (
+
+  data_memory dmem (
     .clock(i_clk),
     .address(mem_addr),
     .data(data_in),
     // .bmask(byte_en),
     .wren(dmem_wren),
     .q(mem_out)
-  );
-*/
-
-  data_memory dmem (
-    .i_clk(i_clk),
-    .i_lsu_addr(mem_addr),
-    .i_wdata(data_in),
-    // .bmask(byte_en),
-    .wren(dmem_wren),
-    .o_data_dmem(mem_out)
   );
 
   always_comb begin
