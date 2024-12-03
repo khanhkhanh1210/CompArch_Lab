@@ -59,7 +59,7 @@ module pipelined
         .i_rst         (i_rst_n),
         .sel           (PCSrcE),
         .stall         (pc_stall),
-        .i_pc          (PCTargetE),
+        .i_pc          (alu_data),
         .pc_o          (pc),
         .pc_4          (pc_4)
     );
@@ -159,7 +159,7 @@ module pipelined
         .i_rst_n        (i_rst_n),
         .pc_D           (pc_D),
         .pc_four_D      (pc_4_D),
-        // .instr_D        (instr_D),
+        .instr_D        (instr_D),
 
         .br_equal_D     (br_equal),
         .br_less_D      (br_less),
@@ -187,7 +187,7 @@ module pipelined
         // Output signals
         .pc_E           (pc_E),
         .pc_four_E      (pc_4_E),
-        // .instr_E        (instr_E),
+        .instr_E        (instr_E),
         
         .br_equal_E     (br_equal_E),
         .br_less_E      (br_less_E),
@@ -214,6 +214,11 @@ module pipelined
 
     logic rd_wren_M, mem_wren_M, insn_vld_M;
     logic [31:0] pc_4_M;
+    logic [31:0] alu_data_M;
+    logic [31:0] rs2_data_M;
+    logic [4:0] rd_addr_M;
+    logic [31:0] instr_M;
+
 
     always_comb begin: opa_sel_block
         if(!opa_sel_E) begin
@@ -250,41 +255,48 @@ module pipelined
         .i_rst_n        (i_rst_n),
         // .pc_E           (pc_E),
         .pc_four_E      (pc_4_E),
-        // .instr_E        (instr_E),
+        .instr_E        (instr_E),
         .rd_wren_E      (rd_wren_E),
         .mem_wren_E     (mem_wren_E),
-        // .insn_vld_E     (o_insn_vld),
         .alu_data_E     (alu_data),
         .rs2_data_E     (rs2_data_E),
         .wb_sel_E       (wb_sel_E),
-        .rd_addr_E      (instr_E[11:7]),
+        // .insn_vld_E     (o_insn_vld),
+        .rd_addr_E      (rd_addr_E),
     
         // .pc_M           (pc),
-        .pc_four_M      (pc_4),
-        // .instr_M        (instr),
-        .rd_wren_M      (rd_wren),
-        .mem_wren_M     (mem_wren),
+        .rd_wren_M      (rd_wren_M),
+        .mem_wren_M     (mem_wren_M),
+        .wb_sel_M       (wb_sel_M),
+        .alu_data_M     (alu_data_M),
+        .rs2_data_M     (rs2_data_M),
+        .pc_four_M      (pc_4_M),
+        .instr_M        (instr_M),
         // .insn_vld_M     (o_insn_vld),
-        .alu_data_M     (alu_data),
-        .rs2_data_M     (rs2_data),
-        .wb_sel_M       (wb_sel),
-        .rd_addr_M      (instr[11:7])
+        .rd_addr_M      (rd_addr_M)
     );
 
 //--------------------Memory stage--------------------
+
+    logic [31:0] pc_4_W;
+    logic [31:0] alu_data_W;
+    logic [31:0] ld_data_W;
+    logic [1:0] wb_sel_W;
+    logic [4:0] rd_addr_W;
+    logic [31:0] instr_W;
 
     lsu lsu_block
     (
         .i_clk          (i_clk),        
         .i_rst_n        (i_rst_n),
-        .i_lsu_addr     (alu_data),
-        .i_st_data      (rs2_data),    
-        .i_lsu_wren     (mem_wren),    
-        .i_io_sw        (i_io_sw),    
+        .i_lsu_addr     (alu_data_M),
+        .i_st_data      (rs2_data_M),  
+        .i_lsu_wren     (mem_wren_M),  
+        .i_io_sw        (i_io_sw), 
         .i_io_btn       (i_io_btn),
-        .instr          (instr[6:0]),
-        .i_lsu_op       (instr[14:12]),
-        .o_ld_data      (ld_data),  
+        .instr          (instr_M[6:0]),
+        .i_lsu_op       (instr_M[14:12]),
+        .o_ld_data      (ld_data)
         .o_io_lcd       (o_io_lcd),
         .o_io_ledr      (o_io_ledr),
         .o_io_ledg      (o_io_ledg),  
@@ -302,35 +314,47 @@ module pipelined
     (
         .i_clk          (i_clk),
         .i_rst_n        (i_rst_n),
-        .pc_M           (pc),
+        // .pc_M           (pc),
         .pc_four_M      (pc_4),
-        .instr_M        (instr),
-        .rd_wren_M      (rd_wren),
-        .insn_vld_M     (o_insn_vld),
-        .alu_data_M     (alu_data),
+        .instr_M        (instr_M),
+        .rd_wren_M      (rd_wren_M),
+        // .insn_vld_M     (o_insn_vld),
+        .alu_data_M     (alu_data_M),
         .ld_data_M      (ld_data),
-        .wb_sel_M       (wb_sel),
-        .rd_addr_M      (instr[11:7]),
-        .pc_W           (pc),
-        .pc_four_W      (pc_4),
-        .instr_W        (instr),
-        .rd_wren_W      (rd_wren),
-        .insn_vld_W     (o_insn_vld),
-        .alu_data_W     (alu_data),
-        .ld_data_W      (ld_data),
-        .wb_sel_W       (wb_sel),
-        .rd_addr_W      (instr[11:7])
+        .wb_sel_M       (wb_sel_M),
+        .rd_addr_M      (rd_addr_M),
+        // .pc_W           (pc),
+
+        .pc_four_W      (pc_4_W),
+        .instr_W        (instr_W),
+        .rd_wren_W      (rd_wren_W),
+        // .insn_vld_W     (o_insn_vld),
+        .alu_data_W     (alu_data_W),
+        .ld_data_W      (ld_data_W),
+        .wb_sel_W       (wb_sel_W),
+        .rd_addr_W      (rd_addr_W)
     );
 
 //--------------------Write-back stage--------------------
 
    always_comb begin
-        case(wb_sel)
-            2'b00: wb_data = alu_data;
-            2'b01: wb_data = ld_data;
-            2'b10: wb_data = pc_4;
+        case(wb_sel_W)
+            2'b00: wb_data = alu_data_W;
+            2'b01: wb_data = ld_data_W;
+            2'b10: wb_data = pc_4_W;
             default: wb_data = 32'b0;
         endcase
     end
+
+// Hazard detection unit
+    
+    hazard_detection (
+        .EX_MEM_rd_wren (rd_wren_E),
+        .D_reg1_addr (rs1_addr_E),
+        .D_reg2_addr (rs2_addr_E),
+        .E_rd_addr (rd_addr_M),
+        .stall (pc_stall),
+        .enable (PCSrcE),
+    );
 
 endmodule : pipelined
