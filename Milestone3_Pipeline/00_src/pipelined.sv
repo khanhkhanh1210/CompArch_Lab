@@ -49,13 +49,17 @@ module pipelined
 
 //--------------------Instruction Fetch stage--------------------
 
+    logic [31:0] pc_stall;
+    logic [31:0] PCTargetE;
+    logic        PCSrcE;
+
     PC PC_block
     (
-    
         .i_clk         (i_clk),
         .i_rst         (i_rst_n),
-        .sel           (pc_sel),
-        .i_pc          (alu_data),
+        .sel           (PCSrcE),
+        .stall         (pc_stall),
+        .i_pc          (PCTargetE),
         .pc_o          (pc),
         .pc_4          (pc_4)
     );
@@ -72,90 +76,45 @@ module pipelined
         .i_stop        (1'b0)	 
     );
 
+    logic [31:0] instr_F, instr_D;
+    logic [31:0] pc_D, pc_4_D;
+
+    assign instr_F = instr;
+
     IF_ID IF_ID_block
     (
         .i_clk        (i_clk),
         .i_rst_n      (i_rst_n),
         .pc_F         (pc),
         .pc_four_F    (pc_4),
-        .instr_F      (instr),
-        .pc_D         (pc),
-        .pc_four_D    (pc_4),
-        .instr_D      (instr)
+        .instr_F      (instr_F),
+        .pc_D         (pc_D),
+        .pc_four_D    (pc_4_D),
+        .instr_D      (instr_D)
     );
 
 //--------------------Instruction Decode stage--------------------
 
-    ctrl_unit ctr_unit_block
+    logic [31:0] pc_E, pc_4_E;
+    // logic [31:0] instr_E;
+    logic 
+    logic        br_equal_E, br_less_E;
+    logic        pc_sel_E;
+    logic        br_un_E;
+    logic        rd_wren_E;
+    logic        opa_sel_E, opb_sel_E;
+    logic [3:0]  alu_op_E;
+    logic        mem_wren_E;
+    logic        insn_vld_E;
+    logic [1:0]  wb_sel_E;
+    logic [31:0] rs1_data_E, rs2_data_E, imm_E;
+    logic [4:0]  rd_addr_E, rs1_addr_E, rs2_addr_E;
+
+    immgen immgen_block
     (
-        .instr        (instr),      
-        .br_less      (br_less),    
-        .br_equal     (br_equal),   
-        .pc_sel       (pc_sel),     
-        .br_un        (br_un),
-        .rd_wren      (rd_wren),    
-        .opa_sel      (opa_sel),   
-        .opb_sel      (opb_sel),
-        .alu_op       (alu_op),
-        .mem_wren     (mem_wren),   
-        .wb_sel       (wb_sel), 
-        .insn_vld     (insn_vld_ctrl)     
+        .instr_i        (instr_D),
+        .imm_o          (imm)
     );
-
-    regfile regfile_block
-    (     
-        .i_clk          (i_clk),
-        .i_rst_n        (i_rst_n),
-        .i_rst1_addr    (instr[19:15]),
-        .i_rst2_addr    (instr[24:20]),
-        .i_rd_addr      (instr[11:7]),
-        .i_rd_data      (wb_data),
-        .i_wr_en        (rd_wren),
-        .o_rst1_data    (rs1_data),
-        .o_rst2_data    (rs2_data)
-    );
-
-    ID_EX ID_EX_block
-    (
-        .i_clk          (i_clk),
-        .i_rst_n        (i_rst_n),
-        .pc_D           (pc),
-        .pc_four_D      (pc_4),
-        .instr_D        (instr),
-        .alu_op_D       (alu_op),
-        .br_un_D        (br_un),
-        .rd_wren_D      (rd_wren),
-        .opa_sel_D      (opa_sel),
-        .opb_sel_D      (opb_sel),
-        .mem_wren_D     (mem_wren),
-        .insn_vld_D     (insn_vld_ctrl),
-        .rs1_data_D     (rs1_data),
-        .rs2_data_D     (rs2_data),
-        .imm_D          (imm),
-        .wb_sel_D       (wb_sel),
-        .rd_addr_D      (instr[11:7]),
-        .rs1_addr_D     (instr[19:15]),
-        .rs2_addr_D     (instr[24:20]),
-        .pc_E           (pc),
-        .pc_four_E      (pc_4),
-        .instr_E        (instr),
-        .br_un_E        (br_un),
-        .rd_wren_E      (rd_wren),
-        .opa_sel_E      (opa_sel),
-        .opb_sel_E      (opb_sel),
-        .mem_wren_E     (mem_wren),
-        .insn_vld_E     (insn_vld_ctrl),
-        .alu_op_E       (alu_op),
-        .rs1_data_E     (rs1_data),
-        .rs2_data_E     (rs2_data),
-        .imm_E          (imm),
-        .wb_sel_E       (wb_sel),
-        .rd_addr_E      (instr[11:7]),
-        .rs1_addr_E     (instr[19:15]),
-        .rs2_addr_E     (instr[24:20])
-    );
-
-//--------------------Execute stage--------------------
 
     brc BRC_block(
         .i_rst1_data     (rs1_data),
@@ -165,25 +124,116 @@ module pipelined
         .o_brc_equal     (br_equal)
     );
 
+    ctrl_unit ctr_unit_block
+    (
+        .instr        (instr_D),
+        .br_less      (br_less),
+        .br_equal     (br_equal),
+        .pc_sel       (pc_sel),
+        .br_un        (br_un),
+        .rd_wren      (rd_wren),
+        .opa_sel      (opa_sel),
+        .opb_sel      (opb_sel),
+        .alu_op       (alu_op),
+        .mem_wren     (mem_wren),
+        .wb_sel       (wb_sel),
+        .insn_vld     (insn_vld_ctrl)
+    );
+
+    regfile regfile_block
+    (     
+        .i_clk          (i_clk),
+        .i_rst_n        (i_rst_n),
+        .i_rst1_addr    (instr_D[19:15]),
+        .i_rst2_addr    (instr_D[24:20]),
+        .i_rd_addr      (instr_D[11:7]),
+        .i_rd_data      (wb_data),
+        .i_wr_en        (rd_wren_W),
+        .o_rst1_data    (rs1_data),
+        .o_rst2_data    (rs2_data)
+    );
+
+    ID_EX ID_EX_block
+    (
+        .i_clk          (i_clk),
+        .i_rst_n        (i_rst_n),
+        .pc_D           (pc_D),
+        .pc_four_D      (pc_4_D),
+        // .instr_D        (instr_D),
+
+        .br_equal_D     (br_equal),
+        .br_less_D      (br_less),
+
+        .pc_sel_D       (pc_sel),
+        .br_un_D        (br_un),
+        .rd_wren_D      (rd_wren),
+        
+        .opa_sel_D      (opa_sel),
+        .opb_sel_D      (opb_sel),
+        .alu_op_D       (alu_op),
+
+        .mem_wren_D     (mem_wren),
+        .insn_vld_D     (insn_vld_ctrl),
+        .wb_sel_D       (wb_sel),
+
+        .rs1_data_D     (rs1_data),
+        .rs2_data_D     (rs2_data),
+        .imm_D          (imm),
+
+        .rd_addr_D      (instr_D[11:7]),
+        .rs1_addr_D     (instr_D[19:15]),
+        .rs2_addr_D     (instr_D[24:20]),
+
+        // Output signals
+        .pc_E           (pc_E),
+        .pc_four_E      (pc_4_E),
+        // .instr_E        (instr_E),
+        
+        .br_equal_E     (br_equal_E),
+        .br_less_E      (br_less_E),
+        .pc_sel_E       (pc_sel_E),
+        .br_un_E        (br_un_E),
+        
+        .rd_wren_E      (rd_wren_E),
+        .opa_sel_E      (opa_sel_E),
+        .opb_sel_E      (opb_sel_E),
+        .alu_op_E       (alu_op_E),
+        .mem_wren_E     (mem_wren_E),
+        .insn_vld_E     (insn_vld_E),
+        .wb_sel_E       (wb_sel_E),
+
+        .rs1_data_E     (rs1_data_E),
+        .rs2_data_E     (rs2_data_E),
+        .imm_E          (imm_E),
+        .rd_addr_E      (rd_addr_E),
+        .rs1_addr_E     (rs1_addr_E),
+        .rs2_addr_E     (rs2_addr_E)
+    );
+
+//--------------------Execute stage--------------------
+
+    logic rd_wren_M, mem_wren_M, insn_vld_M;
+    logic [31:0] pc_4_M;
+
     always_comb begin: opa_sel_block
-        if(!opa_sel) begin
-            operand_a = rs1_data;
+        if(!opa_sel_E) begin
+            operand_a = rs1_data_E;
         end else begin
-            operand_a = pc;
+            operand_a = pc_E;
         end
     end
 
     always_comb begin: opb_sel_block
-        if(opb_sel) begin
-            operand_b = imm;
+        if(opb_sel_E) begin
+            operand_b = imm_E;
         end else begin
-            operand_b = rs2_data;
+            operand_b = rs2_data_E;
         end
     end
 
     alu alu_block
     ( 
-        .i_alu_op       (alu_op),
+        .i_alu_op       (alu_op_E),
         .i_operand_a    (operand_a),
         .i_operand_b    (operand_b),
 
@@ -191,35 +241,30 @@ module pipelined
         .o_insn_vld     (insn_vld_alu)
     );
     always_ff @(posedge i_clk) begin
-        o_insn_vld <= insn_vld_alu & insn_vld_ctrl;    
+        o_insn_vld <= insn_vld_alu & insn_vld_E; 
     end
-
-    immgen immgen_block
-    (
-        .instr_i        (instr),
-        .imm_o          (imm)
-    );
    
     EX_MEM EX_MEM_block
     (
         .i_clk          (i_clk),
         .i_rst_n        (i_rst_n),
-        .pc_E           (pc),
-        .pc_four_E      (pc_4),
-        .instr_E        (instr),
-        .rd_wren_E      (rd_wren),
-        .mem_wren_E     (mem_wren),
-        .insn_vld_E     (o_insn_vld),
+        // .pc_E           (pc_E),
+        .pc_four_E      (pc_4_E),
+        // .instr_E        (instr_E),
+        .rd_wren_E      (rd_wren_E),
+        .mem_wren_E     (mem_wren_E),
+        // .insn_vld_E     (o_insn_vld),
         .alu_data_E     (alu_data),
-        .rs2_data_E     (rs2_data),
-        .wb_sel_E       (wb_sel),
-        .rd_addr_E      (instr[11:7]),
-        .pc_M           (pc),
+        .rs2_data_E     (rs2_data_E),
+        .wb_sel_E       (wb_sel_E),
+        .rd_addr_E      (instr_E[11:7]),
+    
+        // .pc_M           (pc),
         .pc_four_M      (pc_4),
-        .instr_M        (instr),
+        // .instr_M        (instr),
         .rd_wren_M      (rd_wren),
         .mem_wren_M     (mem_wren),
-        .insn_vld_M     (o_insn_vld),
+        // .insn_vld_M     (o_insn_vld),
         .alu_data_M     (alu_data),
         .rs2_data_M     (rs2_data),
         .wb_sel_M       (wb_sel),

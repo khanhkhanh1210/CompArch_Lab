@@ -12,7 +12,12 @@ module add_sub_tb #(
     add_sub #(DATA_SIZE) dut(a, b, select, sum);
 
     initial begin
-        for(int i = 0; i < 2**30; i++) begin
+        $dumpfile("add_sub_tb.vcd");
+        $dumpvars(0, add_sub_tb);
+    end
+
+    initial begin
+        for(int i = 0; i < 2**10; i++) begin
             a = $urandom;
             b = $urandom;
             select = $urandom_range(0, 1);

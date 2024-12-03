@@ -4,7 +4,7 @@ module PC(
 
     input  logic [31:0] i_pc,        // Program counter
     input  logic        sel,         // Select PC + 4 if sel = 1, else select i_pc
-
+    input  logic        stall,       // Stall signal
     output logic [31:0] pc_o,      // Next program counter
     output logic [31:0] pc_4      // Program counter + 4
 );
@@ -23,7 +23,7 @@ module PC(
     always_ff @(posedge i_clk or negedge i_rst) begin
         if(!i_rst) begin
             pc_o <= 32'h0;
-        end else begin
+        end else if(!stall) begin
             pc_o <= pc_next;
         end
     end

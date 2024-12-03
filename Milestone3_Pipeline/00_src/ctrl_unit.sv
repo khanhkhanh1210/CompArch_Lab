@@ -104,7 +104,6 @@ module ctrl_unit
             end
                                                      
             B_FORMAT: begin     
-                
                 casex(instr[14:12])
                     3'b00x: begin
                         pc_sel = br_equal ^ instr[12]; //  pc = pc + imm if equal
